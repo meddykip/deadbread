@@ -7,6 +7,7 @@ public class toasterBehavior : MonoBehaviour
 // TO AVOID MULTIPLE CHECKS ... !
 public GameObject checkarn;
 public GameObject checkoven;
+public GameObject checkstove_toast;
 
 // PUZZLE MANAGER
     public GameObject msgTOAST; // msg to show if player is right/wrong !!
@@ -22,6 +23,7 @@ public GameObject checkoven;
     {
         checkarn.GetComponent<playerBehavior>();
         checkoven.GetComponent<ovenBehavior>();
+        checkstove_toast.GetComponent<stoveBehavior>();
     }
 
     // Update is called once per frame
@@ -51,7 +53,7 @@ public GameObject checkoven;
                     checkoven.GetComponent<ovenBehavior>().AVAILABLEoven = false;
                     wrongBUN = true; // confirms the WRONG !!!
                     checkarn.GetComponent<playerBehavior>().handsFULLtoast = true;
-                } else if (!checkarn.GetComponent<playerBehavior>().handsFULLoven && checkoven.GetComponent<ovenBehavior>().CLICKABLEOVEN){
+                } else if (!checkarn.GetComponent<playerBehavior>().handsFULLoven && checkoven.GetComponent<ovenBehavior>().CLICKABLEOVEN && checkstove_toast.GetComponent<stoveBehavior>().CLICKABLE_stove){
                     // IF the oven wasn't checked + BUT the player still tries to check with the oven ,
                     Debug.Log("CHECK"); // lmk !!
 

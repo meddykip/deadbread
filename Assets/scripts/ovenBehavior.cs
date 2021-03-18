@@ -5,9 +5,9 @@ using UnityEngine;
 public class ovenBehavior : MonoBehaviour
 {
 // TO AVOID MULTIPLE CHECKS ... !
-
     public GameObject checkarn_oven;
     public GameObject checktoaster;
+    public GameObject checkstove;
 
 // PUZZLE MANAGER
     public GameObject msgOVEN; // msg to show if player is right/wrong !!
@@ -28,6 +28,7 @@ public class ovenBehavior : MonoBehaviour
     {
         checkarn_oven.GetComponent<playerBehavior>();
         checktoaster.GetComponent<toasterBehavior>();
+        checkstove.GetComponent<stoveBehavior>();
     }
 
     // Update is called once per frame
@@ -52,12 +53,12 @@ public class ovenBehavior : MonoBehaviour
     void checkaoru(){
         if(CLICKABLEOVEN && AVAILABLEoven){ // IF clickable is TRUE , 
             if(Input.GetKey(KeyCode.F)){ // and player clicks F ,
-                if (!checkarn_oven.GetComponent<playerBehavior>().handsFULLoven && !checkarn_oven.GetComponent<playerBehavior>().handsFULLtoast){
+                if (!checkarn_oven.GetComponent<playerBehavior>().handsFULLoven && !checkarn_oven.GetComponent<playerBehavior>().handsFULLtoast && !checkarn_oven.GetComponent<playerBehavior>().handsFULLstove){
                     checktoaster.GetComponent<toasterBehavior>().AVAILABLEtoast = false;
                     Debug.Log("oven activated"); // lmk <3
                     rightBUN = true; // confirms the RIGHT !!!
                     checkarn_oven.GetComponent<playerBehavior>().handsFULLoven = true;
-                } else if (checkarn_oven.GetComponent<playerBehavior>().handsFULLoven && checktoaster.GetComponent<toasterBehavior>().CLICKABLE){
+                } else if (checkarn_oven.GetComponent<playerBehavior>().handsFULLoven && checktoaster.GetComponent<toasterBehavior>().CLICKABLE && checkstove.GetComponent<stoveBehavior>().CLICKABLE_stove){
                    // IF the oven was checked + BUT the player still tries to check with the toast , 
                     Debug.Log("illegal oven"); // lmk !!
 

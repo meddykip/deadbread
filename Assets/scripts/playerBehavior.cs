@@ -27,6 +27,11 @@ public class playerBehavior : MonoBehaviour
     bool onFloor = true;
     public static bool faceRight = true;
 
+// HELLO KITTY GUN
+
+    public GameObject helloKitty;
+    bool kittygun = false;
+
 // to UNMANIFEST the door stoppers ...!
     public GameObject unmanifest1;
     public GameObject unmanifest2;
@@ -54,10 +59,19 @@ public class playerBehavior : MonoBehaviour
     public bool handsFULLoven = false; // so the player cant check more than one object all at once !!!
     public bool handsFULLtoast = false;
 
+    public bool handsFULLstove = false;
+
     // to reference the objects involved in the puzzle !!
     public GameObject toast; // to use variables from the toast script , 
 
     public GameObject oven; // to use variables from the oven script , 
+
+    public GameObject stove; // to use variables from the stove script ,
+
+    // to trigger the right conversations
+
+    public bool RIGHTCHOICE = false;
+    public bool WRONGCHOICE = false;
 
 // Start is called before the first frame update
     void Start()
@@ -65,9 +79,12 @@ public class playerBehavior : MonoBehaviour
         myBody = gameObject.GetComponent<Rigidbody2D>();
         myCollider = gameObject.GetComponent<BoxCollider2D>();
         myRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+    // KAORU PUZZLE
         c_shoot = GetComponent<playerShoot>();
         toast.GetComponent<toasterBehavior>();
         oven.GetComponent<ovenBehavior>();
+        stove.GetComponent<stoveBehavior>();
 
         warningBOX.enabled = false;
         warningTXT.enabled = false;
@@ -189,22 +206,59 @@ public class playerBehavior : MonoBehaviour
 // KAORU PUZZLE
     void checkBUN(){
         if (Input.GetKeyDown(KeyCode.K)){
+
             if(toast.GetComponent<toasterBehavior>().AVAILABLEtoast && toast.GetComponent<toasterBehavior>().wrongBUN){
-                Debug.Log("WRONGBUN");
-                toast.GetComponent<toasterBehavior>().AVAILABLEtoast = false; // you can no longer check
+
+                Debug.Log("WRONGBUN"); // lmk its wrong <3
+                toast.GetComponent<toasterBehavior>().AVAILABLEtoast = false; // you can no longer check afterwards !!
+
+            // CLOSE THE WARNING BOXES
                 warningBOX.enabled = false;
                 warningTXT.enabled = false;
+            
+            // ENABLE THE OTHERS
+                // the player can check them now ..!
                 oven.GetComponent<ovenBehavior>().AVAILABLEoven = true;
+                stove.GetComponent<stoveBehavior>().AVAILABLEstove = true;
+
+            // no longer with toast ...
                 handsFULLtoast = false;
                 toast.GetComponent<toasterBehavior>().CLICKABLE = false;
-            } else if (oven.GetComponent<ovenBehavior>().AVAILABLEoven && oven.GetComponent<ovenBehavior>().rightBUN){
-                Debug.Log("RIGHTBUN");
-                oven.GetComponent<ovenBehavior>().AVAILABLEoven = false;
+                WRONGCHOICE = true;
+            } else if (stove.GetComponent<stoveBehavior>().AVAILABLEstove && stove.GetComponent<stoveBehavior>().wrongBUN_stove){
+
+                Debug.Log("WRONGBUN STOVE EDITION"); // lmk <3
+                stove.GetComponent<stoveBehavior>().AVAILABLEstove = false;
+                oven.GetComponent<ovenBehavior>().AVAILABLEoven = true;
+
+            // CLOSE THE WARNING BOXES
                 warningBOX.enabled = false;
                 warningTXT.enabled = false;
+
+            // no longer with stove ...
+                handsFULLstove = false;
+                stove.GetComponent<stoveBehavior>().CLICKABLE_stove = false;
+                WRONGCHOICE = true;
+            } else if (oven.GetComponent<ovenBehavior>().AVAILABLEoven && oven.GetComponent<ovenBehavior>().rightBUN){
+
+                Debug.Log("RIGHTBUN"); // correct !!
+            
+            // player can NO longer check !!
+                oven.GetComponent<ovenBehavior>().AVAILABLEoven = false;
+                stove.GetComponent<stoveBehavior>().AVAILABLEstove = false;
+                toast.GetComponent<toasterBehavior>().AVAILABLEtoast = false;
+            
+            // CLOSE THE WARNING BOXES
+                warningBOX.enabled = false;
+                warningTXT.enabled = false;
+
+            // GIVE KEY + ENTRANCE
                 oven.GetComponent<ovenBehavior>().key.SetActive(true);
                 oven.GetComponent<ovenBehavior>().button.SetActive(true);
+
+            // no longer with oven ...
                 handsFULLoven = false;
+                RIGHTCHOICE = true;
             }
         }
     }
@@ -219,7 +273,6 @@ public class playerBehavior : MonoBehaviour
         } else if (other.gameObject.name == "button2_3"){
             Destroy(unmanifest2_3);
         } else if (other.gameObject.name == "button3"){
-            Debug.Log("DIA KEY GET!!!!");
             Destroy(unmanifest3);
         }
 
