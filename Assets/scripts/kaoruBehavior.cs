@@ -12,6 +12,7 @@ public class kaoruBehavior : MonoBehaviour
 // DIALOGUE UI TINGZ
     public Image kaorutxtbox; // the txtbox
     public Text kaorutxt; // the txt IN the txtbox
+    public Image instructions; // the txt that shows how to progress
 
 // MANAGES THE DIALOGUE VISUALS
 
@@ -25,6 +26,8 @@ public class kaoruBehavior : MonoBehaviour
     // SPRITES
     public GameObject KAORUsprite; // holds the sprite !
     public GameObject CARNBUNsprite;
+
+    public GameObject talkYES; // SIGNAL that says u can talk!!!
 
 // DIALOGUE TXT
     public string[] dialogueLines; // txt my beloved
@@ -41,6 +44,7 @@ public class kaoruBehavior : MonoBehaviour
         // they are hidden until triggered ...
         kaorutxt.enabled = false;
         kaorutxtbox.enabled = false;
+        instructions.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -57,6 +61,7 @@ public class kaoruBehavior : MonoBehaviour
         if (other.gameObject.name == "player"){
             Debug.Log("bnuuy real..."); // lmk <3
             KAORUtalk = true; // ENABLE BNUUY !!
+            talkYES.SetActive(true); // shows the SIGNAL !
         }
     }
 
@@ -68,6 +73,7 @@ public class kaoruBehavior : MonoBehaviour
                 kaorutxt.enabled = true; // activate the TXT
                 kaorutxtbox.enabled = true; // activate the TXTBOX
                 kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+                instructions.enabled = true; // activate the INSTRUCTION
             
             // MOVEMENT MANAGEMENT
                 // player CANNOT move ,
@@ -153,6 +159,7 @@ public class kaoruBehavior : MonoBehaviour
                         KAORUsprite.SetActive(false);
                         kaorutxt.enabled = false;
                         kaorutxtbox.enabled = false;
+                        instructions.enabled = false;
 
                         KAORRECTchat = 10;
                         currentLine = 18;
@@ -197,6 +204,7 @@ public class kaoruBehavior : MonoBehaviour
                     KAORUsprite.SetActive(false);
                     kaorutxt.enabled = false;
                     kaorutxtbox.enabled = false;
+                    instructions.enabled = false;
 
                     KAORRONGchat = 0;
                     currentLine = 20;
@@ -276,6 +284,7 @@ public class kaoruBehavior : MonoBehaviour
                     KAORUsprite.SetActive(false);
                     kaorutxt.enabled = false;
                     kaorutxtbox.enabled = false;
+                    instructions.enabled = false;
 
                     KAOFAULTchat = 5;
                     currentLine = 5;
@@ -293,6 +302,7 @@ public class kaoruBehavior : MonoBehaviour
         if(other.gameObject.name == "player"){
             Debug.Log("bnuuy exit");
             KAORUtalk = false;
+            talkYES.SetActive(false); // deactivates the SIGNAL
         }
     }
 }

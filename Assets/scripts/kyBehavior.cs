@@ -12,10 +12,14 @@ public class kyBehavior : MonoBehaviour
     public Image kytxtbox; // the txtbox
     public Text kytxt; // the txt IN the txtbox
 
+    public Image instructions; // the txt that shows how to progress
+
 // MANAGES THE DIALOGUE VISUALS
     public float KYchat; // conversation manager !!!
     public GameObject KYsprite; // holds the sprite !
     public GameObject KYCARNsprite;
+
+    public GameObject talkYES; // SIGNAL that says u can talk!!!
     public string[] dialogueLines; // txt my beloved
     public int currentLine; // takes note of the dialogue #
 
@@ -30,6 +34,7 @@ public class kyBehavior : MonoBehaviour
         // they are hidden until triggered ...
         kytxt.enabled = false;
         kytxtbox.enabled = false;
+        instructions.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -46,6 +51,7 @@ public class kyBehavior : MonoBehaviour
         if(other.gameObject.name == "player"){
             Debug.Log("pocky enter...");
             kyTALK = true;
+            talkYES.SetActive(true); // shows the SIGNAL !
         }
     }
 
@@ -58,6 +64,7 @@ public class kyBehavior : MonoBehaviour
             kytxtbox.enabled = true;
             kytxt.enabled = true;
             kytxt.text = dialogueLines[currentLine];
+            instructions.enabled = true; // activate the INSTRUCTION
 
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -130,6 +137,7 @@ public class kyBehavior : MonoBehaviour
                 kytxt.enabled = false;
                 KYsprite.SetActive(false);
                 kytxtbox.enabled = false;
+                instructions.enabled = false;
 
                 // RESET
                 KYchat = 12;
@@ -162,6 +170,7 @@ public class kyBehavior : MonoBehaviour
                 kytxt.enabled = false;
                 KYsprite.SetActive(false);
                 kytxtbox.enabled = false;
+                instructions.enabled = false;
 
                 // RESET
                 KYchat = 12;
@@ -179,6 +188,7 @@ public class kyBehavior : MonoBehaviour
         if (other.gameObject.name == "player"){
             Debug.Log("pocky exit...");
             kyTALK = false;
+            talkYES.SetActive(false); // deactivates the SIGNAL
         }
     }
 }

@@ -30,7 +30,7 @@ public class playerBehavior : MonoBehaviour
 // HELLO KITTY GUN
 
     public GameObject helloKitty;
-    bool kittygun = false;
+    public bool kittygun = false;
 
 // to UNMANIFEST the door stoppers ...!
     public GameObject unmanifest1;
@@ -194,6 +194,11 @@ public class playerBehavior : MonoBehaviour
         if(collisionInfo.gameObject.tag == "enemy"){ // IF the player collides with the enemy ,
             Debug.Log("OOF"); // just lmk <3
         }
+
+        if (collisionInfo.gameObject.name == "hellokitty"){
+            Destroy(helloKitty);
+            kittygun = true;
+        }
     }
 
 // to OPEN the DOOR !
@@ -280,6 +285,5 @@ public class playerBehavior : MonoBehaviour
         if (other.gameObject.name == "kaoru"){
             checkBUN();
         }
-
     }
 }

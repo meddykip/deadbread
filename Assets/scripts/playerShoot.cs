@@ -19,11 +19,13 @@ public class playerShoot : MonoBehaviour
     float timeFire = 0;
 
     public GameObject eneMON;
+    public GameObject carnbeloved;
 
     // Start is called before the first frame update
     void Start()
     {
         eneMON.GetComponent<monBehavior>();
+        carnbeloved.GetComponent<playerBehavior>();
     }
 
     // Update is called once per frame
@@ -51,15 +53,17 @@ public class playerShoot : MonoBehaviour
     }
 
     void shoot(){
-        Vector2 firePos = new Vector2(beamTip.position.x, beamTip.position.y);
+        if(carnbeloved.GetComponent<playerBehavior>().kittygun){
+            Vector2 firePos = new Vector2(beamTip.position.x, beamTip.position.y);
 
-        Vector2 dir = (playerBehavior.faceRight) ? Vector2.right : Vector2.left;
+            Vector2 dir = (playerBehavior.faceRight) ? Vector2.right : Vector2.left;
 
-        Debug.DrawRay(firePos, dir * range, Color.blue, 1f);
+            Debug.DrawRay(firePos, dir * range, Color.blue, 1f);
 
-        shootRay(firePos, dir);
+            shootRay(firePos, dir);
 
-        drawBullet();
+            drawBullet();
+        }
     }
 
     void shootRay(Vector2 origin, Vector2 direction){

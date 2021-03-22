@@ -10,7 +10,7 @@ public class fourOHfour : MonoBehaviour
     public Image txtbox404; // the txtbox
     public Text txt404; // the txt IN the txtbox
 
-    public Text instructions; // the txt that shows how to progress
+    public Image instructions; // the txt that shows how to progress
 
 // MANAGES THE VISUALS
     public float chat404; // takes note of the dialogue #
@@ -18,6 +18,8 @@ public class fourOHfour : MonoBehaviour
 
     public bool aftertalk404; // repeat sequence...!
     public GameObject spriteHOLDER; // holds the sprite !
+    
+    //public GameObject carnHOLDER;
     public GameObject talkYES; // SIGNAL that says u can talk!!!
 
     public string[] dialogueLines; // txt my beloved
@@ -85,10 +87,10 @@ public class fourOHfour : MonoBehaviour
                     chat404 += 1;
                     currentLine++;
                 }
-            } else if (chat404 == 2){
+            } else if (chat404 == 2){ // SHORTCUT FOR PLAYTEST
                 if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
+                    chat404 = 34;
+                    currentLine = 34;
                 }
             } else if (chat404 == 3){
                 if (Input.GetKeyDown(KeyCode.K)){
@@ -288,6 +290,7 @@ public class fourOHfour : MonoBehaviour
                     txt404.enabled = false;
                     spriteHOLDER.SetActive(false);
                     txtbox404.enabled = false;
+                    instructions.enabled = false;
 
                     currentLine = 41;
                     chat404 = 42;
@@ -315,6 +318,7 @@ public class fourOHfour : MonoBehaviour
                 txt404.enabled = false;
                 spriteHOLDER.SetActive(false);
                 txtbox404.enabled = false;
+                instructions.enabled = false;
 
                 chat404 = 42;
                 currentLine = 41;

@@ -36,6 +36,8 @@ public class monBehavior : MonoBehaviour
     public Image MONtxtbox; // the txtbox
     public Text MONtxt; // the txt IN the txtbox
 
+    public Image instructions; // the txt that shows how to progress
+
 // MANAGES THE DIALOGUE VISUALS
     public float MONchat; // conversation manager !!!
     public float MONfinalchat; // AFTER FIGHT conversation manager !!!
@@ -47,6 +49,7 @@ public class monBehavior : MonoBehaviour
 // SPRITES ...
     public GameObject MONsprite; // holds the sprite !
 
+    public GameObject leftsprite;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +59,7 @@ public class monBehavior : MonoBehaviour
         // they are hidden until triggered ...
         MONtxt.enabled = false;
         MONtxtbox.enabled = false;
+        instructions.enabled = false;
 
     // FIGHTING CODE RELATED
         player = GameObject.FindGameObjectWithTag("Player").transform; // assigns the player
@@ -122,6 +126,7 @@ public class monBehavior : MonoBehaviour
             MONtxt.enabled = true; // activate the TXT
             MONtxtbox.enabled = true; // activate the TXTBOX
             MONtxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+            instructions.enabled = true; // activate the INSTRUCTION
         
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -328,6 +333,7 @@ public class monBehavior : MonoBehaviour
                 MONtxt.enabled = false;
                 MONsprite.SetActive(false);
                 MONtxtbox.enabled = false;
+                instructions.enabled = false;
 
                 // fight START !!!
                 currentLine = 0;
@@ -349,6 +355,7 @@ public class monBehavior : MonoBehaviour
             MONtxt.enabled = true; // activate the TXT
             MONtxtbox.enabled = true; // activate the TXTBOX
             MONtxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+            instructions.enabled = true; // activate the INSTRUCTION
         
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -402,6 +409,7 @@ public class monBehavior : MonoBehaviour
                 MONtxt.enabled = false;
                 MONsprite.SetActive(false);
                 MONtxtbox.enabled = false;
+                instructions.enabled = false;
 
                 // DISABLES everything
                 currentLine = 0;

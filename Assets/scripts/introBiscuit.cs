@@ -13,16 +13,27 @@ public class introBiscuit : MonoBehaviour
     public Image introtxtbox; // the txtbox
     public Text introtxt; // the txt IN the txtbox
 
+    public Image introstructions; // the txtbox
+
 // MANAGES THE DIALOGUE VISUALS
     public float BISCTROchat; // conversation manager !!!
     public GameObject BISCTROsprite; // holds the sprite !
     public GameObject CARNTROsprite;
+
+    public GameObject talkYES; // SIGNAL that says u can talk!!!
+
     public string[] dialogueLines; // txt my beloved
     public int currentLine; // takes note of the dialogue #
 
 // CONTROL PLAYER MOVEMENT
 
     public GameObject carnbeloved;
+
+// HELLO KITTY GUN
+
+    public GameObject misskitty;
+
+    public GameObject shootInstructions;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +42,7 @@ public class introBiscuit : MonoBehaviour
         // they are hidden until triggered ...
         introtxt.enabled = false;
         introtxtbox.enabled = false;
+        introstructions.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -47,16 +59,19 @@ public class introBiscuit : MonoBehaviour
         if (other.gameObject.name == "player"){
             Debug.Log("INTRODUCTIONS.... "); // lmk <3
             introTALK = true; // ENABLE ..
+            talkYES.SetActive(true); // shows the SIGNAL !
         }
     }
     void introdialogue(){
-        if (introTALK){
+        if (introTALK && Input.GetKeyDown(KeyCode.K)){
             Debug.Log("intro time...");
 
         // DIALOGUE MANAGEMENT
             introtxtbox.enabled = true;
             introtxt.enabled = true;
+            introstructions.enabled = true;
             introtxt.text = dialogueLines[currentLine];
+            talkYES.SetActive(false); // deactivates the SIGNAL
 
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -71,11 +86,15 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 1){
+                CARNTROsprite.SetActive(true);
+                BISCTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 2){
+                BISCTROsprite.SetActive(true);
+                CARNTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
@@ -86,11 +105,15 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 4){
+                CARNTROsprite.SetActive(true);
+                BISCTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 5){
+                BISCTROsprite.SetActive(true);
+                CARNTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
@@ -181,6 +204,8 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 23){
+                CARNTROsprite.SetActive(true);
+                BISCTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
@@ -207,14 +232,18 @@ public class introBiscuit : MonoBehaviour
                 // DISABLES CONVO VISUALS ,
                 introTALK = false;
                 introtxt.enabled = false;
-                BISCTROsprite.SetActive(false);
+                CARNTROsprite.SetActive(false);
                 introtxtbox.enabled = false;
+                introstructions.enabled = false;
 
                 // RESET
                 currentLine = 0;
 
-                // DESTROY ... 
+                // DESTROY ... ACTIVATE
                 Destroy(gameObject);
+                misskitty.SetActive(true);
+                shootInstructions.SetActive(true);
+
 
                 // player can move :)
                 carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
@@ -222,6 +251,14 @@ public class introBiscuit : MonoBehaviour
                 carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
 
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other){
+        if(other.gameObject.name == "player"){
+            Debug.Log("clown exit");
+            introTALK = false;
+            talkYES.SetActive(false); // deactivates the SIGNAL
         }
     }
 }

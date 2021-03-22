@@ -12,10 +12,14 @@ public class ouriBehavior : MonoBehaviour
     public Image ouritxtbox; // the txtbox
     public Text ouritxt; // the txt IN the txtbox
 
+    public Image instructions; // the txt that shows how to progress
+
 // MANAGES THE DIALOGUE VISUALS
     public float OURIchat; // conversation manager !!!
     public GameObject OURIsprite; // holds the sprite !
     public GameObject CARNOURIsprite;
+    
+    public GameObject talkYES; // SIGNAL that says u can talk!!!
     public string[] dialogueLines; // txt my beloved
     public int currentLine; // takes note of the dialogue #
 
@@ -32,6 +36,7 @@ public class ouriBehavior : MonoBehaviour
         // they are hidden until triggered ...
         ouritxt.enabled = false;
         ouritxtbox.enabled = false;
+        instructions.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -49,6 +54,7 @@ public class ouriBehavior : MonoBehaviour
         if(other.gameObject.name == "player"){
             Debug.Log("catboy enter...");
             ouriTALK = true;
+            talkYES.SetActive(true); // shows the SIGNAL !
         }
     }
 
@@ -56,10 +62,12 @@ public class ouriBehavior : MonoBehaviour
         if (ouriTALK && Input.GetKeyDown(KeyCode.K)){
         
         //  VISUAL UI TINGZ !!
-            OURIsprite.SetActive(true); // activate the SPRITE
+            CARNOURIsprite.SetActive(true); // activate the SPRITE
             ouritxt.enabled = true; // activate the TXT
             ouritxtbox.enabled = true; // activate the TXTBOX
             ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+            instructions.enabled = true; // activate the INSTRUCTION
+            talkYES.SetActive(false); // deactivates the SIGNAL
         
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -78,15 +86,15 @@ public class ouriBehavior : MonoBehaviour
                     OURIchat += 1;
                     currentLine++;
                 }
-            } else if (OURIchat == 2){
+            } else if (OURIchat == 2){ 
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
                 }
-            } else if (OURIchat == 3){
+            } else if (OURIchat == 3){ // SHORTCUT FOR PLAYTEST
                if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
+                    OURIchat = 20;
+                    currentLine = 20;
                 }
             } else if (OURIchat == 4){
                if(Input.GetKeyDown(KeyCode.K)){
@@ -221,8 +229,10 @@ public class ouriBehavior : MonoBehaviour
                     // DISABLES CONVO VISUALS ,
                     ouriTALK = false;
                     ouritxt.enabled = false;
-                    OURIsprite.SetActive(false);
+                    CARNOURIsprite.SetActive(false);
                     ouritxtbox.enabled = false;
+                    instructions.enabled = false;
+
 
                     OURIchat = 28;
                     currentLine = 29;
@@ -288,8 +298,10 @@ public class ouriBehavior : MonoBehaviour
                 // DISABLES CONVO VISUALS ,
                 ouriTALK = false;
                 ouritxt.enabled = false;
-                OURIsprite.SetActive(false);
+                CARNOURIsprite.SetActive(false);
                 ouritxtbox.enabled = false;
+                instructions.enabled = false;
+
 
                 // player can move :)
                 carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
@@ -304,6 +316,7 @@ public class ouriBehavior : MonoBehaviour
         if(other.gameObject.name == "player"){
             Debug.Log("catboy exit");
             ouriTALK = false;
+            talkYES.SetActive(false); // deactivates the SIGNAL
         }
     }
 }
