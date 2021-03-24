@@ -44,6 +44,10 @@ public class playerBehavior : MonoBehaviour
     public GameObject keydiaGET;
     public GameObject keybiscuitGET;
 
+    // for the DIAlogue,
+
+    public bool diaTALK;
+
 // to UNLOCK the door ..!
     public float VISIONkeys = 0;
     bool doorUNLOCK = false;
@@ -52,6 +56,22 @@ public class playerBehavior : MonoBehaviour
     public bool carnMOVE = true;
 
     private playerShoot c_shoot;
+
+// OMU PUZZLE
+
+public bool strawberrymilk = false;
+
+public bool grudgeFRIEND = false;
+public bool strawberryASK = false;
+
+public GameObject ichimilk;
+
+public GameObject barrier;
+
+public GameObject choco; // to use variables from the choco script,
+public GameObject milk; // to use variables from the milk script,
+public GameObject strawberry; // to use variables from the strawberry script,
+
 
 //KAORU PUZZLE
     public Image warningBOX;
@@ -88,6 +108,11 @@ public class playerBehavior : MonoBehaviour
 
         warningBOX.enabled = false;
         warningTXT.enabled = false;
+
+    // MILK PUZZLE
+        milk.GetComponent<milkBehavior>();
+        choco.GetComponent<chocoBehavior>();
+        strawberry.GetComponent<strawberryBehavior>();
     }
 
     // Update is called once per frame
@@ -118,6 +143,7 @@ public class playerBehavior : MonoBehaviour
 
         kingdomHearts(); // to allow opening the door ,
         checkBUN(); // allows the checking >:)
+        grudgemilk();
     }
 
     // checks what keys the player is pressing
@@ -179,6 +205,7 @@ public class playerBehavior : MonoBehaviour
             Destroy(keydiaGET); // absorb the key
             Debug.Log("DIA KEY GET!!!!"); // lmk !
             VISIONkeys += 1;
+            diaTALK = true;
         }
         if (collisionInfo.gameObject.name == "keyBISCUIT"){
             Destroy(keybiscuitGET); // absorb the key
@@ -196,7 +223,6 @@ public class playerBehavior : MonoBehaviour
         }
 
         if (collisionInfo.gameObject.name == "hellokitty"){
-            Destroy(helloKitty);
             kittygun = true;
         }
     }
@@ -257,10 +283,6 @@ public class playerBehavior : MonoBehaviour
                 warningBOX.enabled = false;
                 warningTXT.enabled = false;
 
-            // GIVE KEY + ENTRANCE
-                oven.GetComponent<ovenBehavior>().key.SetActive(true);
-                oven.GetComponent<ovenBehavior>().button.SetActive(true);
-
             // no longer with oven ...
                 handsFULLoven = false;
                 RIGHTCHOICE = true;
@@ -284,6 +306,52 @@ public class playerBehavior : MonoBehaviour
     // to enable KAORU PUZZLE ...
         if (other.gameObject.name == "kaoru"){
             checkBUN();
+        }
+
+    
+    // STRAWBERRY MILK PUZZLE ...   
+
+        if (other.gameObject.name == "milk"){
+            milk.GetComponent<milkBehavior>().milktalk = true;
+        } else if (other.gameObject.name == "chocolate"){
+            choco.GetComponent<chocoBehavior>().chocotalk = true;
+        } else if (other.gameObject.name == "strawberry"){
+            strawberry.GetComponent<strawberryBehavior>().strawberrytalk = true;
+        }
+
+        if (other.gameObject.name == "ichigomilk"){
+            Destroy(ichimilk);
+            strawberrymilk = true;
+        }
+
+        if (other.gameObject.name == "barTrigger"){
+            if (strawberrymilk){
+                barrier.SetActive(true);
+            } else {
+                barrier.SetActive(false);
+            }
+        }
+    }
+
+    void grudgemilk(){
+        if(grudgeFRIEND){
+            barrier.SetActive(false);
+        }
+    }
+    void OnTriggerExit2D(Collider2D other){
+    // to easily DISABLE milk dialogues
+        if (other.gameObject.name == "milk"){
+
+            milk.GetComponent<milkBehavior>().milktalk = false;
+
+        } else if (other.gameObject.name == "chocolate"){
+
+            choco.GetComponent<chocoBehavior>().chocotalk = false;
+
+        } else if (other.gameObject.name == "strawberry"){
+
+            strawberry.GetComponent<strawberryBehavior>().strawberrytalk = false;
+
         }
     }
 }

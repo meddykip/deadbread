@@ -14,11 +14,13 @@ public class ouriBehavior : MonoBehaviour
 
     public Image instructions; // the txt that shows how to progress
 
+    // SPRITES
+
+    public Image rightSprite;
+    public Image leftSprite;
+
 // MANAGES THE DIALOGUE VISUALS
     public float OURIchat; // conversation manager !!!
-    public GameObject OURIsprite; // holds the sprite !
-    public GameObject CARNOURIsprite;
-    
     public GameObject talkYES; // SIGNAL that says u can talk!!!
     public string[] dialogueLines; // txt my beloved
     public int currentLine; // takes note of the dialogue #
@@ -62,10 +64,8 @@ public class ouriBehavior : MonoBehaviour
         if (ouriTALK && Input.GetKeyDown(KeyCode.K)){
         
         //  VISUAL UI TINGZ !!
-            CARNOURIsprite.SetActive(true); // activate the SPRITE
             ouritxt.enabled = true; // activate the TXT
             ouritxtbox.enabled = true; // activate the TXTBOX
-            ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
             instructions.enabled = true; // activate the INSTRUCTION
             talkYES.SetActive(false); // deactivates the SIGNAL
         
@@ -74,9 +74,9 @@ public class ouriBehavior : MonoBehaviour
             carnbeloved.GetComponent<playerBehavior>().carnMOVE = false;
             carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         if(!carnbeloved.GetComponent<playerBehavior>().RIGHTCHOICE){
+            ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
             if (OURIchat == 0){ // PT.1
             currentLine = 0;
-            ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
@@ -93,8 +93,8 @@ public class ouriBehavior : MonoBehaviour
                 }
             } else if (OURIchat == 3){ // SHORTCUT FOR PLAYTEST
                if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat = 20;
-                    currentLine = 20;
+                    OURIchat += 1;
+                    currentLine++;
                 }
             } else if (OURIchat == 4){
                if(Input.GetKeyDown(KeyCode.K)){
@@ -117,198 +117,197 @@ public class ouriBehavior : MonoBehaviour
                     currentLine++;
                 }
             } else if (OURIchat == 8){
+                Debug.Log("mmroww");
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
                 }
             } else if (OURIchat == 9){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 10){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 11){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 12){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 13){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 14){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 15){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 16){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 17){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 18){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 19){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 20){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 21){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 22){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 23){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 24){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 25){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 26){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 27){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 28){
-               if(Input.GetKeyDown(KeyCode.K)){
-                    OURIchat += 1;
-                    currentLine++;
-                }
-            } else if (OURIchat == 29){
-               if(Input.GetKeyDown(KeyCode.K)){
                      // END CONVERSATION
                     Debug.Log("END CONVO");
 
                     // DISABLES CONVO VISUALS ,
                     ouriTALK = false;
                     ouritxt.enabled = false;
-                    CARNOURIsprite.SetActive(false);
                     ouritxtbox.enabled = false;
                     instructions.enabled = false;
 
 
-                    OURIchat = 28;
-                    currentLine = 29;
+                    OURIchat = 10;
+                    currentLine = 9;
                     
                     // player can move :)
                     carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
                     carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                     carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            } else if (OURIchat == 10){
+               if(Input.GetKeyDown(KeyCode.K)){
+                    OURIchat += 1;
+                    currentLine++;
                 }
+            } else if (OURIchat == 11){
+                     // END CONVERSATION
+                    Debug.Log("END CONVO");
+
+                    // DISABLES CONVO VISUALS ,
+                    ouriTALK = false;
+                    ouritxt.enabled = false;
+                    ouritxtbox.enabled = false;
+                    instructions.enabled = false;
+
+
+                    OURIchat = 10;
+                    currentLine = 9;
+                    
+                    // player can move :)
+                    carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
+                    carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                    carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         } else if (carnbeloved.GetComponent<playerBehavior>().RIGHTCHOICE){
             Debug.Log("tomato town");
-            if (OURIchat == 28 || OURIchat == 0){
-                OURIchat = 30;
-                currentLine = 30;
+            if (OURIchat == 10 || OURIchat == 11 || OURIchat == 0){
+                OURIchat = 12;
+                currentLine = 9;
                 ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 Debug.Log("hatsune");
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 30){
+            } else if (OURIchat == 13){
                  Debug.Log("miku");
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 31){
+            } else if (OURIchat == 14){
                  Debug.Log("oo ee oo");
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 32){
+            } else if (OURIchat == 15){
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 33){
+            } else if (OURIchat == 16){
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 34){
+            } else if (OURIchat == 17){
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 35){
+            } else if (OURIchat == 18){
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 36){
+            } else if (OURIchat == 19){
                if(Input.GetKeyDown(KeyCode.K)){
                     OURIchat += 1;
                     currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            } else if (OURIchat == 37){
+            } else if (OURIchat == 20){
+               if(Input.GetKeyDown(KeyCode.K)){
+                    OURIchat += 1;
+                    currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+                }
+            } else if (OURIchat == 21){
+               if(Input.GetKeyDown(KeyCode.K)){
+                    OURIchat += 1;
+                    currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+                }
+            } else if (OURIchat == 22){
                 // END CONVERSATION
                 Debug.Log("END CONVO");
 
                 // DISABLES CONVO VISUALS ,
                 ouriTALK = false;
                 ouritxt.enabled = false;
-                CARNOURIsprite.SetActive(false);
                 ouritxtbox.enabled = false;
                 instructions.enabled = false;
 
+                // RESET
+                OURIchat = 23;
+                currentLine = 20;
 
                 // player can move :)
                 carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
                 carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                 carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+                } else if (OURIchat == 23){
+               currentLine = 20;
+               if(Input.GetKeyDown(KeyCode.K)){
+                    OURIchat += 1;
+                    currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 }
-            }
+            } else if (OURIchat == 24){
+                // END CONVERSATION
+                Debug.Log("END CONVO");
+
+                // DISABLES CONVO VISUALS ,
+                ouriTALK = false;
+                ouritxt.enabled = false;
+                ouritxtbox.enabled = false;
+                instructions.enabled = false;
+
+                // RESET
+                OURIchat = 25;
+                currentLine = 21;
+
+                // player can move :)
+                carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
+                carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            } else if (OURIchat == 25){
+                currentLine = 21;
+               if(Input.GetKeyDown(KeyCode.K)){
+                    OURIchat += 1;
+                    currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+                }
+            } else if (OURIchat == 26){
+               if(Input.GetKeyDown(KeyCode.K)){
+                    OURIchat += 1;
+                    currentLine++;
+                    ouritxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+                }
+            } else if (OURIchat == 27){
+                // END CONVERSATION
+                Debug.Log("END CONVO");
+
+                // DISABLES CONVO VISUALS ,
+                ouriTALK = false;
+                ouritxt.enabled = false;
+                ouritxtbox.enabled = false;
+                instructions.enabled = false;
+
+                // RESET
+                OURIchat = 23;
+                currentLine = 20;
+
+                // player can move :)
+                carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
+                carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            } 
+            }   
         }
     }
 

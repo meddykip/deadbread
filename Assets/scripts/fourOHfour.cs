@@ -12,12 +12,14 @@ public class fourOHfour : MonoBehaviour
 
     public Image instructions; // the txt that shows how to progress
 
+    public Image leftSprite;
+    public Image rightSprite;
+
 // MANAGES THE VISUALS
     public float chat404; // takes note of the dialogue #
     public bool talk404; // talking to 404 ... CONFIRMED!?!
 
     public bool aftertalk404; // repeat sequence...!
-    public GameObject spriteHOLDER; // holds the sprite !
     
     //public GameObject carnHOLDER;
     public GameObject talkYES; // SIGNAL that says u can talk!!!
@@ -65,18 +67,19 @@ public class fourOHfour : MonoBehaviour
             Debug.Log("hatsune miku"); // lmk <3
         
         //  VISUAL UI TINGZ !!
-            spriteHOLDER.SetActive(true); // activate the SPRITE
             talkYES.SetActive(false); // deactivates the SIGNAL
             txt404.enabled = true; // activate the TXT
             instructions.enabled = true; // activate the INSTRUCTION
             txtbox404.enabled = true; // activate the TXTBOX
             txt404.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
+            rightSprite.enabled = true;
         
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
             carn404.GetComponent<playerBehavior>().carnMOVE = false;
             carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
-            
+        
+        if (!carn404.GetComponent<playerBehavior>().strawberryASK){
             if (chat404 == 0){ // PT.1
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
@@ -87,10 +90,10 @@ public class fourOHfour : MonoBehaviour
                     chat404 += 1;
                     currentLine++;
                 }
-            } else if (chat404 == 2){ // SHORTCUT FOR PLAYTEST
+            } else if (chat404 == 2){ 
                 if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 = 34;
-                    currentLine = 34;
+                    chat404 += 1;
+                    currentLine++;
                 }
             } else if (chat404 == 3){
                 if (Input.GetKeyDown(KeyCode.K)){
@@ -129,10 +132,76 @@ public class fourOHfour : MonoBehaviour
                 }
             } else if (chat404 == 10){
                 if (Input.GetKeyDown(KeyCode.K)){
+                Debug.Log("END CONVO");
+                talk404 = false;
+                txt404.enabled = false;
+                txtbox404.enabled = false;
+                instructions.enabled = false;
+            rightSprite.enabled = false;
+
+                chat404 = 25;
+                currentLine = 25;
+
+            // MOVEMENT RELATED
+                carn404.GetComponent<playerBehavior>().carnMOVE = true;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+                }
+            } else if (chat404 == 25){
+                if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
-            } else if (chat404 == 11){
+            } else if (chat404 == 26){
+                if (Input.GetKeyDown(KeyCode.K)){
+                    chat404 += 1;
+                    currentLine++;
+                }
+            } else if (chat404 == 27){
+                Debug.Log("END CONVO");
+                talk404 = false;
+                txt404.enabled = false;
+                txtbox404.enabled = false;
+                instructions.enabled = false;
+                rightSprite.enabled = false;
+
+                chat404 = 28;
+                currentLine = 27;
+
+            // MOVEMENT RELATED
+                carn404.GetComponent<playerBehavior>().carnMOVE = true;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            } else if (chat404 == 28){
+                if (Input.GetKeyDown(KeyCode.K)){
+                    chat404 += 1;
+                    currentLine++;
+                }
+            } else if (chat404 == 29){
+                if (Input.GetKeyDown(KeyCode.K)){
+                    chat404 += 1;
+                    currentLine++;
+                }
+            } else if (chat404 == 30){
+                Debug.Log("END CONVO");
+                talk404 = false;
+                txt404.enabled = false;
+                txtbox404.enabled = false;
+                instructions.enabled = false;
+                rightSprite.enabled = false;
+
+                chat404 = 25;
+                currentLine = 25;
+
+            // MOVEMENT RELATED
+                carn404.GetComponent<playerBehavior>().carnMOVE = true;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+        } else if (carn404.GetComponent<playerBehavior>().strawberryASK){
+            if (chat404 == 25){
+                chat404 = 11;
+                currentLine = 11;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
@@ -175,13 +244,23 @@ public class fourOHfour : MonoBehaviour
             } else if (chat404 == 19){
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
-                    currentLine++;
+                    currentLine = 25;
                 }
             } else if (chat404 == 20){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
+                Debug.Log("END CONVO");
+                talk404 = false;
+                txt404.enabled = false;
+                txtbox404.enabled = false;
+                instructions.enabled = false;
+                rightSprite.enabled = false;
+
+                chat404 = 21;
+                currentLine = 25;
+
+            // MOVEMENT RELATED
+                carn404.GetComponent<playerBehavior>().carnMOVE = true;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             } else if (chat404 == 21){
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
@@ -193,45 +272,20 @@ public class fourOHfour : MonoBehaviour
                     currentLine++;
                 }
             } else if (chat404 == 23){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 24){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 25){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 26){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 27){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 28){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 29){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 30){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
+                Debug.Log("END CONVO");
+                talk404 = false;
+                txt404.enabled = false;
+                txtbox404.enabled = false;
+                instructions.enabled = false;
+                rightSprite.enabled = false;
+
+                chat404 = 31;
+                currentLine = 27;
+
+            // MOVEMENT RELATED
+                carn404.GetComponent<playerBehavior>().carnMOVE = true;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             } else if (chat404 == 31){
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
@@ -243,97 +297,24 @@ public class fourOHfour : MonoBehaviour
                     currentLine++;
                 }
             } else if (chat404 == 33){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 34){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 35){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 36){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 37){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 38){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 39){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 40){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 41){
-                Debug.Log("TEST11");
-                if (Input.GetKeyDown(KeyCode.K)){
-                    Debug.Log("END CONVO");
-                    talk404 = false;
-                    txt404.enabled = false;
-                    spriteHOLDER.SetActive(false);
-                    txtbox404.enabled = false;
-                    instructions.enabled = false;
-
-                    currentLine = 41;
-                    chat404 = 42;
-
-                // MOVEMENT RELATED
-                    carn404.GetComponent<playerBehavior>().carnMOVE = true;
-                    carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
-                    carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-                }
-            } else if (chat404 == 42){
-                Debug.Log("TEST1");
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            } else if (chat404 == 43){
-                Debug.Log("TEST111");
-                if (Input.GetKeyDown(KeyCode.K)){
-                    chat404 += 1;
-                    currentLine++;
-                }
-            }  else if (chat404 == 44){
                 Debug.Log("END CONVO");
                 talk404 = false;
                 txt404.enabled = false;
-                spriteHOLDER.SetActive(false);
                 txtbox404.enabled = false;
                 instructions.enabled = false;
+                rightSprite.enabled = false;
 
-                chat404 = 42;
-                currentLine = 41;
+                chat404 = 21;
+                currentLine = 25;
 
             // MOVEMENT RELATED
                 carn404.GetComponent<playerBehavior>().carnMOVE = true;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
-            }
+            }  
         }
-
-        if (currentLine >= dialogueLines.Length){
-            
-        } 
     }
+}
 
 
 

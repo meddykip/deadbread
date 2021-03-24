@@ -16,8 +16,6 @@ public class finalBiscuit : MonoBehaviour
 
 // MANAGES THE DIALOGUE VISUALS
     public float FINALchat; // conversation manager !!!
-    public GameObject FINALsprite; // holds the sprite !
-    public GameObject FINALCARNsprite;
 
     public GameObject talkYES; // SIGNAL that says u can talk!!!
     public string[] dialogueLines; // txt my beloved
@@ -68,7 +66,7 @@ public class finalBiscuit : MonoBehaviour
 
 
         // SPRITE MANAGEMENT
-            FINALsprite.SetActive(true);
+
 
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -200,39 +198,20 @@ public class finalBiscuit : MonoBehaviour
                     FINALchat += 1;
                     currentLine++;
                 }
-            } else if (FINALchat == 25){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    FINALchat += 1;
-                    currentLine++;
-                }
-            } else if (FINALchat == 26){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    FINALchat += 1;
-                    currentLine++;
-                }
-            } else if (FINALchat == 27){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    FINALchat += 1;
-                    currentLine++;
-                }
-            } else if (FINALchat == 28){
-                if (Input.GetKeyDown(KeyCode.K)){
-                    FINALchat += 1;
-                    currentLine++;
-                }
-            } else if (FINALchat == 29){
+            }  else if (FINALchat == 25){
                 // END CONVERSATION
                 Debug.Log("END CONVO");
 
                 // DISABLES CONVO VISUALS ,
                 finalTALK = false;
                 finaltxt.enabled = false;
-                FINALsprite.SetActive(false);
+  
                 finaltxtbox.enabled = false;
                 instructions.enabled = false;
 
                 // RESET
-                currentLine = 0;
+                FINALchat = 24;
+                currentLine = 24;
 
                 // DESTROY ...
                 Destroy(gameObject);

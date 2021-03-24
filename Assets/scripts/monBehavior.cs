@@ -136,194 +136,145 @@ public class monBehavior : MonoBehaviour
             if (MONchat == 0){ // PT. 1
                 Debug.Log("FIRST PART OF CONVO");
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
                     Debug.Log("onward to 2");
                     MONchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (MONchat == 1){ // PT. 2
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 2){ // PT. 2
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 3){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 4){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 5){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 6){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 7){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 8){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 9){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 10){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 11){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 12){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 13){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 14){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 15){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 16){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 17){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 18){
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 19){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K,
                     Debug.Log("onwards");
                     MONchat += 1;
                     currentLine++;
                 }
             } else if (MONchat == 20){ 
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 21){ 
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 22){ 
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 23){
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 24){
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 25){
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 26){
-
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K,
-                    Debug.Log("onwards");
-                    MONchat += 1;
-                    currentLine++;
-                }
-            } else if (MONchat == 27){ 
 
             // END CONVERSATION
                 Debug.Log("END CONVO");
@@ -363,8 +314,8 @@ public class monBehavior : MonoBehaviour
             carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         
             if (MONfinalchat == 0){ // PT. 1
-                currentLine = 27;
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                currentLine = 23;
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
                     Debug.Log("onwards");
                     MONfinalchat += 1; // next part
                     currentLine++; // next dialogue
@@ -372,21 +323,21 @@ public class monBehavior : MonoBehaviour
 
             } else if (MONfinalchat == 1){ // PT. 2
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
                     MONfinalchat += 1; // next part
                     currentLine++; // next dialogue
                 }
 
             } else if (MONfinalchat == 2){ // PT. 2
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
                     MONfinalchat += 1; // next part
                     currentLine++; // next dialogue
                 }
 
             } else if (MONfinalchat == 3){
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
                     Debug.Log("onward to KEY GIVING");
                     MONfinalchat += 1; // next part
                     currentLine++; // next dialogue
@@ -394,13 +345,45 @@ public class monBehavior : MonoBehaviour
 
             } else if (MONfinalchat == 4){ 
 
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
                     Debug.Log("onward to KEY GIVING");
                     MONfinalchat += 1; // next part
                     currentLine++; // next dialogue
                 }
 
-            } else if (MONfinalchat == 5){ // LAST PT.
+            } else if (MONfinalchat == 5){ 
+
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
+                    Debug.Log("onward to KEY GIVING");
+                    MONfinalchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+
+            } else if (MONfinalchat == 6){ 
+
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
+                    Debug.Log("onward to KEY GIVING");
+                    MONfinalchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+
+            } else if (MONfinalchat == 7){ 
+
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
+                    Debug.Log("onward to KEY GIVING");
+                    MONfinalchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+
+            } else if (MONfinalchat == 8){ 
+
+                if(Input.GetKeyUp(KeyCode.K)){ // if player presses K, 
+                    Debug.Log("onward to KEY GIVING");
+                    MONfinalchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+
+            } else if (MONfinalchat == 9){ // LAST PT.
                 // END CONVERSATION
                 Debug.Log("END CONVO");
 

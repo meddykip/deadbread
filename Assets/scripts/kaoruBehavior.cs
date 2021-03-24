@@ -14,6 +14,10 @@ public class kaoruBehavior : MonoBehaviour
     public Text kaorutxt; // the txt IN the txtbox
     public Image instructions; // the txt that shows how to progress
 
+    // SPRITES
+    public Image leftSprite; // holds the sprite !
+    public Image rightSprite;
+
 // MANAGES THE DIALOGUE VISUALS
 
     // CHAT STATES ... 
@@ -22,10 +26,6 @@ public class kaoruBehavior : MonoBehaviour
     public float KAORRECTchat; // correct choice: conversation manager !!!
 
     public float KAORRONGchat; // wrong choice: conversation manager
-
-    // SPRITES
-    public GameObject KAORUsprite; // holds the sprite !
-    public GameObject CARNBUNsprite;
 
     public GameObject talkYES; // SIGNAL that says u can talk!!!
 
@@ -36,6 +36,11 @@ public class kaoruBehavior : MonoBehaviour
 // CONTROL PLAYER MOVEMENT
 
     public GameObject carnbeloved;
+
+// REWARDS for completing the puzzle
+    public GameObject key;
+
+    public GameObject button;
 
     // Start is called before the first frame update
     void Start()
@@ -69,11 +74,10 @@ public class kaoruBehavior : MonoBehaviour
     void kaorudialogue(){
         if (KAORUtalk && Input.GetKeyDown(KeyCode.K)){ // if it is true AND K is pressed , 
             //  VISUAL UI TINGZ !!
-                KAORUsprite.SetActive(true); // activate the SPRITE
                 kaorutxt.enabled = true; // activate the TXT
                 kaorutxtbox.enabled = true; // activate the TXTBOX
-                kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                 instructions.enabled = true; // activate the INSTRUCTION
+                rightSprite.enabled = true;
             
             // MOVEMENT MANAGEMENT
                 // player CANNOT move ,
@@ -88,81 +92,116 @@ public class kaoruBehavior : MonoBehaviour
 
                 if(KAORRECTchat == 0){
                     Debug.Log("XIAOTO");
-                    currentLine = 8;
+                    currentLine = 7;
                     kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     if (Input.GetKeyDown(KeyCode.K)){
                         Debug.Log("LOLOL");
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; 
+
                     }
                 } else if (KAORRECTchat == 1){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 }  else if (KAORRECTchat == 2){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 3){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 4){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 5){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 6){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 7){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 8){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 9){
+                    key.SetActive(true);
+                    button.SetActive(true);
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 10){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRECTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
                     }
                 } else if (KAORRECTchat == 11){
-                     if (Input.GetKeyDown(KeyCode.K)){
-                        KAORRECTchat += 1;
-                    }
-                } else if (KAORRECTchat == 12){
                         KAORUtalk = false;
                         KAORUdefault = false;
                         // END CONVERSATION
                         Debug.Log("END CONVO");
 
                         // DISABLES CONVO VISUALS ,
-                        KAORUsprite.SetActive(false);
                         kaorutxt.enabled = false;
                         kaorutxtbox.enabled = false;
                         instructions.enabled = false;
+                        rightSprite.enabled = false;
 
-                        KAORRECTchat = 10;
-                        currentLine = 18;
+                        KAORRECTchat = 12;
+                        currentLine = 17;
+
+                        // player can move :)
+                        carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
+                        carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
+                        carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+                } else if (KAORRECTchat == 12){
+                     if (Input.GetKeyDown(KeyCode.K)){
+                        KAORRECTchat += 1;
+                        currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine];  
+                    }
+                } else if (KAORRECTchat == 13){
+                        KAORUtalk = false;
+                        KAORUdefault = false;
+                        // END CONVERSATION
+                        Debug.Log("END CONVO");
+
+                        // DISABLES CONVO VISUALS ,
+                        kaorutxt.enabled = false;
+                        kaorutxtbox.enabled = false;
+                        instructions.enabled = false;
+                        rightSprite.enabled = false;
+
+                        KAORRECTchat = 11;
+                        currentLine = 17;
 
                         // player can move :)
                         carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
@@ -177,21 +216,25 @@ public class kaoruBehavior : MonoBehaviour
 
                 if(KAORRONGchat == 0){
                     Debug.Log("XIAOTO");
-                    currentLine = 20;
+                    currentLine = 18;
                     kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     if (Input.GetKeyDown(KeyCode.K)){
                         Debug.Log("LOLOL");
                         KAORRONGchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAORRONGchat == 1){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRONGchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
-                }  else if (KAORRONGchat == 2){
+                } else if (KAORRONGchat == 2){
                      if (Input.GetKeyDown(KeyCode.K)){
                         KAORRONGchat += 1;
+                        currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAORRONGchat == 3){
                     KAORUtalk = false;
@@ -201,13 +244,13 @@ public class kaoruBehavior : MonoBehaviour
                     Debug.Log("END CONVO");
 
                     // DISABLES CONVO VISUALS ,
-                    KAORUsprite.SetActive(false);
                     kaorutxt.enabled = false;
                     kaorutxtbox.enabled = false;
                     instructions.enabled = false;
+                    rightSprite.enabled = false;
 
                     KAORRONGchat = 0;
-                    currentLine = 20;
+                    currentLine = 18;
 
                         // player can move :)
                     carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
@@ -232,18 +275,21 @@ public class kaoruBehavior : MonoBehaviour
                         Debug.Log("LOLOL");
                         KAOFAULTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAOFAULTchat == 1){
                     if (Input.GetKeyDown(KeyCode.K)){
                         Debug.Log("LOLOL");
                         KAOFAULTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAOFAULTchat == 2){
                     if (Input.GetKeyDown(KeyCode.K)){
                         Debug.Log("LOLOL");
                         KAOFAULTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAOFAULTchat == 3){
                     if (Input.GetKeyDown(KeyCode.K)){
@@ -256,35 +302,33 @@ public class kaoruBehavior : MonoBehaviour
                         Debug.Log("LOLOL");
                         KAOFAULTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAOFAULTchat == 5){
                     if (Input.GetKeyDown(KeyCode.K)){
                         Debug.Log("LOLOL");
                         KAOFAULTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAOFAULTchat == 6){
                     if (Input.GetKeyDown(KeyCode.K)){
                         Debug.Log("LOLOL");
                         KAOFAULTchat += 1;
                         currentLine++;
+                        kaorutxt.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
                     }
                 } else if (KAOFAULTchat == 7){
-                    if (Input.GetKeyDown(KeyCode.K)){
-                        Debug.Log("LOLOL");
-                        KAOFAULTchat += 1;
-                    }
-                } else if (KAOFAULTchat == 8){
                     KAORUtalk = false;
                     KAORUdefault = false;
                     // END CONVERSATION
                     Debug.Log("END CONVO");
 
                     // DISABLES CONVO VISUALS ,
-                    KAORUsprite.SetActive(false);
                     kaorutxt.enabled = false;
                     kaorutxtbox.enabled = false;
                     instructions.enabled = false;
+                    rightSprite.enabled = false;
 
                     KAOFAULTchat = 5;
                     currentLine = 5;

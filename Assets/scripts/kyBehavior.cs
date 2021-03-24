@@ -14,10 +14,11 @@ public class kyBehavior : MonoBehaviour
 
     public Image instructions; // the txt that shows how to progress
 
+    public Image rightSprite;
+    public Image leftSprite;
+
 // MANAGES THE DIALOGUE VISUALS
     public float KYchat; // conversation manager !!!
-    public GameObject KYsprite; // holds the sprite !
-    public GameObject KYCARNsprite;
 
     public GameObject talkYES; // SIGNAL that says u can talk!!!
     public string[] dialogueLines; // txt my beloved
@@ -60,11 +61,11 @@ public class kyBehavior : MonoBehaviour
             Debug.Log("ky time...!!!");
 
         // DIALOGUE MANAGEMENT
-            KYsprite.SetActive(true);
             kytxtbox.enabled = true;
             kytxt.enabled = true;
             kytxt.text = dialogueLines[currentLine];
             instructions.enabled = true; // activate the INSTRUCTION
+            rightSprite.enabled = true;
 
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -129,24 +130,8 @@ public class kyBehavior : MonoBehaviour
             } else if (KYchat == 11){
                 Debug.Log("11");
                 if(Input.GetKeyDown(KeyCode.K)){
-                // END CONVERSATION
-                Debug.Log("END CONVO");
-
-                // DISABLES CONVO VISUALS ,
-                kyTALK = false;
-                kytxt.enabled = false;
-                KYsprite.SetActive(false);
-                kytxtbox.enabled = false;
-                instructions.enabled = false;
-
-                // RESET
-                KYchat = 12;
-                currentLine = 12;
-
-                // player can move :)
-                carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;
-                carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
-                carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+                    KYchat += 1;
+                    currentLine++;
                 }
             } else if (KYchat == 12){
                 Debug.Log("12");
@@ -168,13 +153,13 @@ public class kyBehavior : MonoBehaviour
                 // DISABLES CONVO VISUALS ,
                 kyTALK = false;
                 kytxt.enabled = false;
-                KYsprite.SetActive(false);
                 kytxtbox.enabled = false;
                 instructions.enabled = false;
+                rightSprite.enabled = false;
 
                 // RESET
-                KYchat = 12;
-                currentLine = 12;
+                KYchat = 13;
+                currentLine = 13;
 
                 // player can move :)
                 carnbeloved.GetComponent<playerBehavior>().carnMOVE = true;

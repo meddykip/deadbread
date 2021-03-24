@@ -95,11 +95,6 @@ public class ruokiBehavior : MonoBehaviour
                         currentLine++;
                     }
                 } else if (RUOKchat == 4){
-                    if(Input.GetKeyDown(KeyCode.K)){
-                        RUOKchat += 1;
-                        currentLine++;
-                    }
-                } else if (RUOKchat == 5){
                     Debug.Log("END CONVO");
 
                     // DISABLES CONVO VISUALS ,

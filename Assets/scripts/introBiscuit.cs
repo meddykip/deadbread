@@ -13,12 +13,20 @@ public class introBiscuit : MonoBehaviour
     public Image introtxtbox; // the txtbox
     public Text introtxt; // the txt IN the txtbox
 
-    public Image introstructions; // the txtbox
+    public Image introstructions; // txt progression instructions
+
+    // SPRITE PLACEMENTS
+    public Image rightSprite;
+
+    public Image leftSprite;
+
+    // RUOKI SPRITES
+    public Sprite ruoki_cry;
+    public Sprite carn_worry;
+    public Sprite biscuit_excited;
 
 // MANAGES THE DIALOGUE VISUALS
     public float BISCTROchat; // conversation manager !!!
-    public GameObject BISCTROsprite; // holds the sprite !
-    public GameObject CARNTROsprite;
 
     public GameObject talkYES; // SIGNAL that says u can talk!!!
 
@@ -43,6 +51,9 @@ public class introBiscuit : MonoBehaviour
         introtxt.enabled = false;
         introtxtbox.enabled = false;
         introstructions.enabled = false;
+
+        rightSprite.enabled = false;
+        leftSprite.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -79,22 +90,20 @@ public class introBiscuit : MonoBehaviour
             carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
             if(BISCTROchat == 0){
-                BISCTROsprite.SetActive(true);
+                rightSprite.enabled = true;
+                rightSprite.sprite = ruoki_cry;
+                
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     Debug.Log("onward to 2");
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 1){
-                CARNTROsprite.SetActive(true);
-                BISCTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 2){
-                BISCTROsprite.SetActive(true);
-                CARNTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
@@ -105,15 +114,11 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 4){
-                CARNTROsprite.SetActive(true);
-                BISCTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 5){
-                BISCTROsprite.SetActive(true);
-                CARNTROsprite.SetActive(false);
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
@@ -129,110 +134,12 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 8){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 9){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 10){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 11){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 12){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 13){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 14){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 15){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 16){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 17){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 18){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 19){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 20){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 21){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 22){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 23){
-                CARNTROsprite.SetActive(true);
-                BISCTROsprite.SetActive(false);
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 24){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 25){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 26){
-                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
-                    BISCTROchat += 1; // next part
-                    currentLine++; // next dialogue
-                }
-            } else if (BISCTROchat == 27){
                 // END CONVERSATION
                 Debug.Log("END CONVO");
 
                 // DISABLES CONVO VISUALS ,
                 introTALK = false;
                 introtxt.enabled = false;
-                CARNTROsprite.SetActive(false);
                 introtxtbox.enabled = false;
                 introstructions.enabled = false;
 
