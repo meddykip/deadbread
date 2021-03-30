@@ -20,10 +20,24 @@ public class introBiscuit : MonoBehaviour
 
     public Image leftSprite;
 
-    // RUOKI SPRITES
-    public Sprite ruoki_cry;
-    public Sprite carn_worry;
-    public Sprite biscuit_excited;
+    public Image rname;
+    public Image lname;
+
+    public Image showcase;
+
+    //NAMETAGS
+
+    public Sprite ruoktag;
+    public Sprite bisctag;
+
+    // SPRITES
+
+    public Sprite showkeys;
+    public Sprite b1;
+    public Sprite b2;
+    public Sprite b3;
+
+    public Sprite r1;
 
 // MANAGES THE DIALOGUE VISUALS
     public float BISCTROchat; // conversation manager !!!
@@ -54,6 +68,11 @@ public class introBiscuit : MonoBehaviour
 
         rightSprite.enabled = false;
         leftSprite.enabled = false;
+
+        lname.enabled = false;
+        rname.enabled = false;
+
+        showcase.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -91,7 +110,9 @@ public class introBiscuit : MonoBehaviour
 
             if(BISCTROchat == 0){
                 rightSprite.enabled = true;
-                rightSprite.sprite = ruoki_cry;
+                rightSprite.sprite = b3;
+                rname.enabled = true;
+                rname.sprite = bisctag;
                 
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     Debug.Log("onward to 2");
@@ -99,6 +120,7 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 1){
+                rightSprite.sprite = b1;
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
@@ -109,31 +131,74 @@ public class introBiscuit : MonoBehaviour
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 3){
+                showcase.enabled = true;
+                rightSprite.sprite = b2;
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 4){
+                rightSprite.sprite = b1;
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 5){
+                showcase.enabled = false;
+                rightSprite.sprite = b3;
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 6){
+                rightSprite.sprite = b2;
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 7){
+                rightSprite.sprite = b2;
                 if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
                     BISCTROchat += 1; // next part
                     currentLine++; // next dialogue
                 }
             } else if (BISCTROchat == 8){
+                rightSprite.sprite = b3;
+                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                    BISCTROchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+            } else if (BISCTROchat == 9){
+                rightSprite.sprite = b1;
+                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                    BISCTROchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+            } else if (BISCTROchat == 10){
+                rightSprite.sprite = r1;
+                rname.sprite = ruoktag;
+                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                    BISCTROchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+            } else if (BISCTROchat == 11){
+                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                    BISCTROchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+            } else if (BISCTROchat == 12){
+                rightSprite.sprite = b1;
+                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                    BISCTROchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+            } else if (BISCTROchat == 13){
+                rightSprite.sprite = r1;
+                if(Input.GetKeyDown(KeyCode.K)){ // if player presses K, 
+                    BISCTROchat += 1; // next part
+                    currentLine++; // next dialogue
+                }
+            } else if (BISCTROchat == 14){
                 // END CONVERSATION
                 Debug.Log("END CONVO");
 
@@ -142,6 +207,8 @@ public class introBiscuit : MonoBehaviour
                 introtxt.enabled = false;
                 introtxtbox.enabled = false;
                 introstructions.enabled = false;
+                rightSprite.enabled = false;
+                rname.enabled = false;
 
                 // RESET
                 currentLine = 0;

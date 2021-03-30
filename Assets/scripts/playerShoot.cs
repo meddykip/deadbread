@@ -63,6 +63,8 @@ public class playerShoot : MonoBehaviour
             shootRay(firePos, dir);
 
             drawBullet();
+
+            
         }
     }
 

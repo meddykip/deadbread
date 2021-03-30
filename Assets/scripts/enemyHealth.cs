@@ -22,10 +22,14 @@ public class enemyHealth : MonoBehaviour
     [SerializeField]
     float currentHealth; // shows current health , 
 
+    public SpriteRenderer myrend;
+    public Color dmg;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = baseHealth;
+        myrend = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame

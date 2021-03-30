@@ -13,7 +13,11 @@ public class PREkey : MonoBehaviour
     public Image instructions; // the txt that shows how to progress
 
     public Image leftSprite;
-    public Image rightSprite;
+    public Image lname;
+
+    public Sprite carntag;
+    public Sprite c1;
+    public Sprite c2;
 
 // MANAGES THE DIALOGUE VISUALS
     public float DIAchat; // conversation manager !!!
@@ -34,7 +38,7 @@ public class PREkey : MonoBehaviour
         diatxtbox.enabled = false;
         instructions.enabled = false;
 
-        rightSprite.enabled = false;
+        lname.enabled = false;
         leftSprite.enabled = false;
 
     // MOVEMENT RELATED
@@ -64,7 +68,10 @@ public class PREkey : MonoBehaviour
             carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         
             if(DIAchat == 0){
-                rightSprite.enabled = true;
+                leftSprite.enabled = true;
+                lname.enabled = true;
+                leftSprite.sprite = c1;
+                lname.sprite = carntag;
                 Debug.Log("gh");
                 if(Input.GetKeyDown(KeyCode.K)){
                     DIAchat += 1;
@@ -76,6 +83,7 @@ public class PREkey : MonoBehaviour
                     currentLine++;
                 }
             } else if (DIAchat == 2){
+
                 if(Input.GetKeyDown(KeyCode.K)){
                     DIAchat += 1;
                     currentLine++;
@@ -86,6 +94,7 @@ public class PREkey : MonoBehaviour
                     currentLine++;
                 }
             } else if (DIAchat == 4){
+                leftSprite.sprite = c2;
                 if(Input.GetKeyDown(KeyCode.K)){
                     DIAchat += 1;
                     currentLine++;
@@ -101,7 +110,8 @@ public class PREkey : MonoBehaviour
                     // DISABLES CONVO VISUALS ,
                     carnbeloved.GetComponent<playerBehavior>().diaTALK = false;
                     diatxt.enabled = false;
-                    rightSprite.enabled = false;
+                    leftSprite.enabled = false;
+                    lname.enabled = false;
                     diatxtbox.enabled = false;
                     instructions.enabled = false;
 

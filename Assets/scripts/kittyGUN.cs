@@ -16,6 +16,14 @@ public class kittyGUN : MonoBehaviour
 
     public Image showcase;
     public Image leftSprite;
+    public Image lname;
+
+        //NAMETAG
+
+        public Sprite carntag;
+        public Sprite hkgun;
+        public Sprite c1;
+        public Sprite c2;
 
 // MANAGES THE DIALOGUE VISUALS
     public float KITTYGUNchat; // conversation manager !!!
@@ -40,6 +48,7 @@ public class kittyGUN : MonoBehaviour
         showcase.enabled = false;
 
         leftSprite.enabled = false;
+        lname.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -77,6 +86,7 @@ public class kittyGUN : MonoBehaviour
             if(KITTYGUNchat == 0){
                 Debug.Log("gh");
                 showcase.enabled = true;
+                showcase.sprite = hkgun;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KITTYGUNchat += 1;
                     currentLine++;
@@ -89,6 +99,9 @@ public class kittyGUN : MonoBehaviour
             } else if (KITTYGUNchat == 2){
                 showcase.enabled = false;
                 leftSprite.enabled = true;
+                leftSprite.sprite = c2;
+                lname.enabled = true;
+                lname.sprite = carntag;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KITTYGUNchat += 1;
                     currentLine++;
@@ -99,6 +112,7 @@ public class kittyGUN : MonoBehaviour
                     currentLine++;
                 }
             }  else if  (KITTYGUNchat == 4){
+                leftSprite.sprite = c1;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KITTYGUNchat += 1;
                     currentLine++;
@@ -110,6 +124,7 @@ public class kittyGUN : MonoBehaviour
                     kittygunTALK = false;
                     kittyguntxt.enabled = false;
                     leftSprite.enabled = false;
+                    lname.enabled = false;
                     kittyguntxtbox.enabled = false;
                     instructions.enabled = false;
 

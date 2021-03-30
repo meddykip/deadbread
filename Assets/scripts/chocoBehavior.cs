@@ -13,6 +13,7 @@ public class chocoBehavior : MonoBehaviour
     public Text chocotxt; // the txt IN the txtbox
 
     public Image instructions; // txt progression instructions
+    public GameObject talkYES; // SIGNAL that says u can talk!!!
 
     // SPRITE PLACEMENTS
     public Image rightSprite;

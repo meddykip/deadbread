@@ -6,14 +6,39 @@ using UnityEngine.UI;
 public class fourOHfour : MonoBehaviour
 {
 
+public bool pantryKEY;
+
 // UI TINGZ
     public Image txtbox404; // the txtbox
     public Text txt404; // the txt IN the txtbox
 
     public Image instructions; // the txt that shows how to progress
 
-    public Image leftSprite;
+    public Image showcase;
+
     public Image rightSprite;
+    public Image leftSprite;
+
+    public Image rname;
+    public Image lname;
+
+        // NAMETAG
+
+        public Sprite carntag;
+        public Sprite nueltag;
+
+        // SPRITES
+
+        public Sprite pantry;
+
+        public Sprite c1;
+        public Sprite c2;
+        public Sprite c3;
+
+        public Sprite n1;
+        public Sprite n2;
+        public Sprite n3;
+
 
 // MANAGES THE VISUALS
     public float chat404; // takes note of the dialogue #
@@ -39,6 +64,12 @@ public class fourOHfour : MonoBehaviour
         instructions.enabled = false;
         txt404.enabled = false;
         txtbox404.enabled = false;
+        showcase.enabled = false;
+
+        rightSprite.enabled = false;
+        leftSprite.enabled = false;
+        rname.enabled = false;
+        lname.enabled = false;
 
     // PLAYER MOVEMENT RELATED
         carn404.GetComponent<playerBehavior>(); // carn's object + script
@@ -71,8 +102,6 @@ public class fourOHfour : MonoBehaviour
             txt404.enabled = true; // activate the TXT
             instructions.enabled = true; // activate the INSTRUCTION
             txtbox404.enabled = true; // activate the TXTBOX
-            txt404.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
-            rightSprite.enabled = true;
         
         // MOVEMENT MANAGEMENT
             // player CANNOT move ,
@@ -80,12 +109,22 @@ public class fourOHfour : MonoBehaviour
             carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         
         if (!carn404.GetComponent<playerBehavior>().strawberryASK){
+            txt404.text = dialogueLines[currentLine]; // make sure the TXT presents the DIALOGUE
             if (chat404 == 0){ // PT.1
+                leftSprite.enabled = true;
+                lname.enabled = true;
+                leftSprite.sprite = c1;
+                lname.sprite = carntag;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
             } else if (chat404 == 1){
+                lname.enabled = false;
+	            rightSprite.enabled = true;
+	            rname.enabled = true;
+                rightSprite.sprite = n1;
+                rname.sprite = nueltag;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
@@ -96,26 +135,37 @@ public class fourOHfour : MonoBehaviour
                     currentLine++;
                 }
             } else if (chat404 == 3){
+                rname.enabled = false;
+                leftSprite.enabled = true;
+                lname.enabled = true;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
             } else if (chat404 == 4){
+                rname.enabled = true;
+                lname.enabled = false;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
             } else if (chat404 == 5){
+                lname.enabled = true;
+                rname.enabled = false;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
             } else if (chat404 == 6){
+                rname.enabled = true;
+                lname.enabled = false;
+                rightSprite.sprite = n2;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
             } else if (chat404 == 7){
+                rightSprite.sprite = n1;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
@@ -137,7 +187,10 @@ public class fourOHfour : MonoBehaviour
                 txt404.enabled = false;
                 txtbox404.enabled = false;
                 instructions.enabled = false;
-            rightSprite.enabled = false;
+                rightSprite.enabled = false;
+                leftSprite.enabled = false;
+                rname.enabled = false;
+                lname.enabled = false;
 
                 chat404 = 25;
                 currentLine = 25;
@@ -148,6 +201,8 @@ public class fourOHfour : MonoBehaviour
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
                 }
             } else if (chat404 == 25){
+                rightSprite.enabled = true;
+                rname.enabled = true;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
@@ -164,6 +219,7 @@ public class fourOHfour : MonoBehaviour
                 txtbox404.enabled = false;
                 instructions.enabled = false;
                 rightSprite.enabled = false;
+                rname.enabled = false;
 
                 chat404 = 28;
                 currentLine = 27;
@@ -173,11 +229,15 @@ public class fourOHfour : MonoBehaviour
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             } else if (chat404 == 28){
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rightSprite.sprite = n3;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
                 }
             } else if (chat404 == 29){
+                rightSprite.sprite = n2;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
@@ -189,6 +249,7 @@ public class fourOHfour : MonoBehaviour
                 txtbox404.enabled = false;
                 instructions.enabled = false;
                 rightSprite.enabled = false;
+                rname.enabled = false;
 
                 chat404 = 25;
                 currentLine = 25;
@@ -199,52 +260,92 @@ public class fourOHfour : MonoBehaviour
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             }
         } else if (carn404.GetComponent<playerBehavior>().strawberryASK){
-            if (chat404 == 25){
+            if (chat404 == 25 || chat404 == 28){
+                rightSprite.sprite = n3;
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rname.sprite = nueltag;
                 chat404 = 11;
-                currentLine = 11;
+                currentLine = 10;
+                txt404.text = dialogueLines[currentLine]; 
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 12){
+                rname.enabled = false;
+                lname.enabled = true;
+                lname.sprite = carntag;
+                leftSprite.enabled = true;
+                leftSprite.sprite = c3;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 13){
+                rname.enabled = true;
+                lname.enabled = false;
+                rightSprite.sprite = n1;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 14){
+                rname.enabled = false;
+                lname.enabled = true;
+                leftSprite.sprite = c2;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 15){
+                Debug.Log("ACQUIRED");
+                rname.enabled = true;
+                lname.enabled = false;
+                rightSprite.sprite = n2;
+                showcase.enabled = true;
+                showcase.sprite = pantry;
+                pantryKEY = true;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 16){
+                rightSprite.sprite = n1;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 17){
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 18){
+                showcase.enabled = false;
+                rname.enabled = false;
+                lname.enabled = true;
+                leftSprite.sprite = c3;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 19){
+                rname.enabled = true;
+                lname.enabled = false;
+                rightSprite.sprite = n2;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
-                    currentLine = 25;
+                    currentLine++ ;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 20){
                 Debug.Log("END CONVO");
@@ -252,24 +353,33 @@ public class fourOHfour : MonoBehaviour
                 txt404.enabled = false;
                 txtbox404.enabled = false;
                 instructions.enabled = false;
+                leftSprite.enabled = false;
                 rightSprite.enabled = false;
+                rname.enabled = false;
 
                 chat404 = 21;
-                currentLine = 25;
+                currentLine = 24;
 
             // MOVEMENT RELATED
                 carn404.GetComponent<playerBehavior>().carnMOVE = true;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             } else if (chat404 == 21){
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rightSprite.sprite = n1;
+                rname.sprite = nueltag;
+                txt404.text = dialogueLines[currentLine]; 
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 22){
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 23){
                 Debug.Log("END CONVO");
@@ -278,23 +388,32 @@ public class fourOHfour : MonoBehaviour
                 txtbox404.enabled = false;
                 instructions.enabled = false;
                 rightSprite.enabled = false;
+                rname.enabled = false;
 
                 chat404 = 31;
-                currentLine = 27;
+                currentLine = 26;
 
             // MOVEMENT RELATED
                 carn404.GetComponent<playerBehavior>().carnMOVE = true;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                 carn404.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
             } else if (chat404 == 31){
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rightSprite.sprite = n3;
+                rname.sprite = nueltag;
+                txt404.text = dialogueLines[currentLine]; 
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 32){
+                rightSprite.sprite = n2;
                 if (Input.GetKeyDown(KeyCode.K)){
                     chat404 += 1;
                     currentLine++;
+                    txt404.text = dialogueLines[currentLine]; 
                 }
             } else if (chat404 == 33){
                 Debug.Log("END CONVO");
@@ -303,6 +422,7 @@ public class fourOHfour : MonoBehaviour
                 txtbox404.enabled = false;
                 instructions.enabled = false;
                 rightSprite.enabled = false;
+                rname.enabled = false;
 
                 chat404 = 21;
                 currentLine = 25;

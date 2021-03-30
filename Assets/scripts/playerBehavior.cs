@@ -11,6 +11,8 @@ public class playerBehavior : MonoBehaviour
     public float gravityMultiplier;
     public float jumpMultiplier;
 
+    public Animator movie;
+
 //REFERENCES to components
     public Rigidbody2D myBody;
     BoxCollider2D myCollider;
@@ -18,8 +20,35 @@ public class playerBehavior : MonoBehaviour
 // SPRITES !!
     SpriteRenderer myRenderer;
 
-    public Sprite jumpSprite;
-    public Sprite walkSprite;
+// INVENTORY
+
+    public Image slot1;
+    public Image slot2;
+
+        // SPRITES
+
+        public Sprite blank;
+        public Sprite hkgun;
+        public Sprite cookey;
+        public Sprite pastryKEY;
+        public Sprite ichigomilk;
+
+    public GameObject nuelbeloved;
+    public GameObject omubeloved;
+    public GameObject grudgebeloved;
+// KEYNVENTORY
+
+    public Image kh1;
+    public Image kh2;
+    public Image kh3;
+    public Image kh4;
+
+        // SPRITES
+
+        public Sprite fofkey;
+        public Sprite dkey;
+        public Sprite akey;
+        public Sprite bkey;
 
 //PRIVATE code + tunes
     float moveDir = 1;
@@ -37,6 +66,9 @@ public class playerBehavior : MonoBehaviour
     public GameObject unmanifest2;
     public GameObject unmanifest2_3;
     public GameObject unmanifest3;
+    public GameObject unmanifest4;
+
+    public GameObject unmanifest5;
 
 // to COLLECT THE KEYS ...!
     public GameObject key404GET;
@@ -93,12 +125,20 @@ public GameObject strawberry; // to use variables from the strawberry script,
     public bool RIGHTCHOICE = false;
     public bool WRONGCHOICE = false;
 
+
 // Start is called before the first frame update
     void Start()
     {
         myBody = gameObject.GetComponent<Rigidbody2D>();
         myCollider = gameObject.GetComponent<BoxCollider2D>();
         myRenderer = gameObject.GetComponent<SpriteRenderer>();
+        movie = GetComponent<Animator>();
+
+    // INVENTORY 
+
+        nuelbeloved.GetComponent<fourOHfour>(); // nuel's object + script
+        omubeloved.GetComponent<omuBehavior>();
+        grudgebeloved.GetComponent<strawberryBehavior>();
 
     // KAORU PUZZLE
         c_shoot = GetComponent<playerShoot>();
@@ -134,16 +174,24 @@ public GameObject strawberry; // to use variables from the strawberry script,
         }
 
     // for the SHOOTING code , 
-        if (Input.GetKeyDown(KeyCode.Space) && c_shoot.shootSpeed == 0){
+        if (Input.GetKeyDown(KeyCode.Space) && c_shoot.shootSpeed == 0 && kittygun){
+            movie.SetBool("shoot", true);
             c_shoot.OnShoot();
+        } else {
+            movie.SetBool("shoot", false);
         }
-        if (Input.GetKey(KeyCode.Space) && c_shoot.shootSpeed > -1){
+        if (Input.GetKeyDown(KeyCode.Space) && c_shoot.shootSpeed > -1 && kittygun){
+            movie.SetBool("shoot", true);
             c_shoot.OnShoot();
+        } else {
+            movie.SetBool("shoot", false);
         }
 
         kingdomHearts(); // to allow opening the door ,
         checkBUN(); // allows the checking >:)
         grudgemilk();
+        cookiemilk();
+        pantrymilk();
     }
 
     // checks what keys the player is pressing
@@ -152,22 +200,27 @@ public GameObject strawberry; // to use variables from the strawberry script,
             moveDir = 1; // move forward !
             faceRight = true; // confirms direction
             myRenderer.flipX = true; // keeps the sprite direction
+            movie.SetBool("walk", true);
         } else if (Input.GetKey(KeyCode.A)){ // ELSE if the player presses A
             moveDir = -1; // go back ,
             faceRight = false; // unfinals the fantasy ,
             myRenderer.flipX = false; // flips the sprite !
+            movie.SetBool("walk", true);
         } else {
+            movie.SetBool("walk", false);
+            movie.SetBool("idle", true);
             moveDir = 0;
         }
 
         if(Input.GetKey(KeyCode.W) && onFloor){ // IF the player presses W,
             Debug.Log("WROW");
-            myRenderer.sprite = jumpSprite;
+            movie.SetBool("jump", true);
             myBody.velocity = new Vector3(myBody.velocity.x, jumpHeight);
             // jumping movement !!!!
 
         } else if(!Input.GetKey(KeyCode.W) && myBody.velocity.y > 1){
             myBody.velocity += Vector2.up * Physics.gravity.y * (jumpMultiplier * 1f)* Time.deltaTime;
+            
         }
     }
 
@@ -186,7 +239,7 @@ public GameObject strawberry; // to use variables from the strawberry script,
 // PURE COLLISION code...!
     void OnCollisionEnter2D(Collision2D collisionInfo){
         if(collisionInfo.gameObject.tag == "floor"){ // IF the player collides with the floor , 
-            myRenderer.sprite = walkSprite; // sprite = walk sprite
+            movie.SetBool("jump", false);
             onFloor = true; // walking CONFIRMED ...
         }
         
@@ -195,22 +248,26 @@ public GameObject strawberry; // to use variables from the strawberry script,
             Destroy(key404GET); // absorb the key
             Debug.Log("404 KEY GET!!!!"); // lmk !
             VISIONkeys += 1;
+            kh1.sprite = fofkey;
         } 
         if (collisionInfo.gameObject.name == "keyART"){
             Destroy(keyartGET); // absorb the key
             Debug.Log("ART KEY GET!!!!"); // lmk !
             VISIONkeys += 1;
+            kh2.sprite = akey;
         }
         if (collisionInfo.gameObject.name == "keyDIA"){
             Destroy(keydiaGET); // absorb the key
             Debug.Log("DIA KEY GET!!!!"); // lmk !
             VISIONkeys += 1;
             diaTALK = true;
+            kh3.sprite = dkey;
         }
         if (collisionInfo.gameObject.name == "keyBISCUIT"){
             Destroy(keybiscuitGET); // absorb the key
             Debug.Log("BISCUIT KEY GET!!!!"); // lmk !
             VISIONkeys += 1;
+            kh4.sprite = bkey;
         }
 
         if (collisionInfo.gameObject.tag == "door" && doorUNLOCK){ // IF the player has the key + collides with the door
@@ -224,12 +281,13 @@ public GameObject strawberry; // to use variables from the strawberry script,
 
         if (collisionInfo.gameObject.name == "hellokitty"){
             kittygun = true;
+            slot1.sprite = hkgun;
         }
     }
 
 // to OPEN the DOOR !
     void kingdomHearts(){
-        if (VISIONkeys == 4){ // IF player collects all the keys ...
+        if (VISIONkeys >= 4){ // IF player collects all the keys ...
          doorUNLOCK = true; // you can unlock the door !! :)
         }
     }
@@ -301,7 +359,11 @@ public GameObject strawberry; // to use variables from the strawberry script,
             Destroy(unmanifest2_3);
         } else if (other.gameObject.name == "button3"){
             Destroy(unmanifest3);
-        }
+        } else if (other.gameObject.name == "button4"){
+            Destroy(unmanifest4);
+        }  else if (other.gameObject.name == "button5"){
+            Destroy(unmanifest4);
+        } 
 
     // to enable KAORU PUZZLE ...
         if (other.gameObject.name == "kaoru"){
@@ -313,10 +375,13 @@ public GameObject strawberry; // to use variables from the strawberry script,
 
         if (other.gameObject.name == "milk"){
             milk.GetComponent<milkBehavior>().milktalk = true;
+            milk.GetComponent<milkBehavior>().talkYES.SetActive(true);
         } else if (other.gameObject.name == "chocolate"){
             choco.GetComponent<chocoBehavior>().chocotalk = true;
+            choco.GetComponent<chocoBehavior>().talkYES.SetActive(true);
         } else if (other.gameObject.name == "strawberry"){
             strawberry.GetComponent<strawberryBehavior>().strawberrytalk = true;
+            strawberry.GetComponent<strawberryBehavior>().talkYES.SetActive(true);
         }
 
         if (other.gameObject.name == "ichigomilk"){
@@ -333,9 +398,27 @@ public GameObject strawberry; // to use variables from the strawberry script,
         }
     }
 
+    void pantrymilk(){
+        if (nuelbeloved.GetComponent<fourOHfour>().pantryKEY && !omubeloved.GetComponent<omuBehavior>().cookierun && !grudgebeloved.GetComponent<strawberryBehavior>().milkGET){
+            slot2.sprite = pastryKEY;
+        } else if (!nuelbeloved.GetComponent<fourOHfour>().pantryKEY && !omubeloved.GetComponent<omuBehavior>().cookierun && !grudgebeloved.GetComponent<strawberryBehavior>().milkGET){
+            slot2.sprite = blank;
+        }
+    }
+
+    void cookiemilk(){
+        if(omubeloved.GetComponent<omuBehavior>().cookierun && !grudgebeloved.GetComponent<strawberryBehavior>().milkGET && !nuelbeloved.GetComponent<fourOHfour>().pantryKEY){
+            slot2.sprite = cookey;
+        } else if (!omubeloved.GetComponent<omuBehavior>().cookierun && !grudgebeloved.GetComponent<strawberryBehavior>().milkGET && !nuelbeloved.GetComponent<fourOHfour>().pantryKEY){
+            slot2.sprite = blank;
+        }
+    }
+
     void grudgemilk(){
-        if(grudgeFRIEND){
-            barrier.SetActive(false);
+        if(grudgebeloved.GetComponent<strawberryBehavior>().milkGET && !nuelbeloved.GetComponent<fourOHfour>().pantryKEY && !omubeloved.GetComponent<omuBehavior>().cookierun){
+            slot2.sprite = ichigomilk;
+        } else if (!grudgebeloved.GetComponent<strawberryBehavior>().milkGET && !nuelbeloved.GetComponent<fourOHfour>().pantryKEY && !omubeloved.GetComponent<omuBehavior>().cookierun){
+            slot2.sprite = blank;
         }
     }
     void OnTriggerExit2D(Collider2D other){
@@ -343,15 +426,17 @@ public GameObject strawberry; // to use variables from the strawberry script,
         if (other.gameObject.name == "milk"){
 
             milk.GetComponent<milkBehavior>().milktalk = false;
+            milk.GetComponent<milkBehavior>().talkYES.SetActive(false);
 
         } else if (other.gameObject.name == "chocolate"){
 
             choco.GetComponent<chocoBehavior>().chocotalk = false;
+            choco.GetComponent<chocoBehavior>().talkYES.SetActive(false);
 
         } else if (other.gameObject.name == "strawberry"){
 
             strawberry.GetComponent<strawberryBehavior>().strawberrytalk = false;
-
+            strawberry.GetComponent<strawberryBehavior>().talkYES.SetActive(false);
         }
     }
 }

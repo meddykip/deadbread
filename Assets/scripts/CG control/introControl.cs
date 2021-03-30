@@ -25,77 +25,84 @@ public class introControl : MonoBehaviour
     }
 
     void introManage(){
-        if (introCount == 1){
+        if (introCount == 0){
             Debug.Log("PART ONE OF STORY");
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_1;
 
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("1");
+            }
+        } else if (introCount == 1){
+            Debug.Log("PART TWO OF STORY");
+            mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_1;
+            
+            if (Input.GetKeyDown(KeyCode.RightArrow)){
+                introCount += 1;
+                Debug.Log("2");
             }
         } else if (introCount == 2){
-            Debug.Log("PART TWO OF STORY");
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_2;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("2");
             }
         } else if (introCount == 3){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_3;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("3");
             }
         } else if (introCount == 4){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_4;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("4");
             }
         } else if (introCount == 5){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_5;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("5");
             }
         } else if (introCount == 6){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_6;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("6");
             }
         } else if (introCount == 7){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_7;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("7");
             }
         } else if (introCount == 8){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_8;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("8");
             }
         } else if (introCount == 9){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_9;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("NEXT PAGE");
+                Debug.Log("9");
             }
         } else if (introCount == 10){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_10;
             
             if (Input.GetKeyDown(KeyCode.RightArrow)){
                 introCount += 1;
-                Debug.Log("LAST PAGE");
+                Debug.Log("10");
             }
         } else if (introCount == 11){
             mainIntro.transform.GetComponent<UnityEngine.UI.Image>().sprite = intro_11;

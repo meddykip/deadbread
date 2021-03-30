@@ -16,6 +16,19 @@ public class confu2ionEvent : MonoBehaviour
 
     public Image leftSprite;
     public Image rightSprite;
+    public Image rname;
+    public Image lname;
+
+        // SPRITES
+
+        public Sprite carntag;
+        public Sprite ghostag;
+
+        public Sprite g1;
+        public Sprite g2;
+        public Sprite c1;
+        public Sprite c2;
+
 
 // MANAGES THE DIALOGUE VISUALS
     public float CONFU2IONchat; // conversation manager !!!
@@ -37,7 +50,9 @@ public class confu2ionEvent : MonoBehaviour
         instructions.enabled = false;
 
         rightSprite.enabled = false;
+        rname.enabled = false;
         leftSprite.enabled = false;
+        lname.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -74,6 +89,9 @@ public class confu2ionEvent : MonoBehaviour
         
             if(CONFU2IONchat == 0){
                 rightSprite.enabled = true;
+                rname.enabled = true;
+                rname.sprite = ghostag;
+                rightSprite.sprite = g1;
                 Debug.Log("gh");
                 if(Input.GetKeyDown(KeyCode.K)){
                     CONFU2IONchat += 1;
@@ -85,11 +103,19 @@ public class confu2ionEvent : MonoBehaviour
                     currentLine++;
                 }
             } else if (CONFU2IONchat == 2){
+                rname.enabled = false;
+                leftSprite.enabled = true;
+                lname.enabled = true;
+                lname.sprite = carntag;
+                leftSprite.sprite = c1;
                 if(Input.GetKeyDown(KeyCode.K)){
                     CONFU2IONchat += 1;
                     currentLine++;
                 }
             } else if (CONFU2IONchat == 3){
+                lname.enabled = false;
+                rname.enabled = true;
+                rightSprite.sprite = g2;
                 if(Input.GetKeyDown(KeyCode.K)){
                     CONFU2IONchat += 1;
                     currentLine++;
@@ -110,6 +136,9 @@ public class confu2ionEvent : MonoBehaviour
                     currentLine++;
                 }
             } else if (CONFU2IONchat == 7){
+                rname.enabled = false;
+                lname.enabled = true;
+                leftSprite.sprite = c2;
                 if(Input.GetKeyDown(KeyCode.K)){
                     CONFU2IONchat += 1;
                     currentLine++;
@@ -123,6 +152,10 @@ public class confu2ionEvent : MonoBehaviour
                     rightSprite.enabled = false;
                     confu2iontxtbox.enabled = false;
                     instructions.enabled = false;
+                    leftSprite.enabled = false;
+                    rightSprite.enabled = false;
+                    rname.enabled = false;
+                    lname.enabled = false;
 
                     Destroy(gameObject);
 

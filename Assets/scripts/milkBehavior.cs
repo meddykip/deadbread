@@ -14,6 +14,8 @@ public class milkBehavior : MonoBehaviour
 
     public Image instructions; // txt progression instructions
 
+    public GameObject talkYES; // SIGNAL that says u can talk!!!
+
     // SPRITE PLACEMENTS
     public Image rightSprite;
     public Image leftSprite;

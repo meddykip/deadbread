@@ -12,6 +12,9 @@ public class monletBehavior : MonoBehaviour
     private Transform player; // assigns the player ...
     private Vector2 target; // to set up where the beam should go >:O 
 
+    public GameObject carnbeloved;
+
+    public float damage = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,8 @@ public class monletBehavior : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform; // assign player with carn !!
         
         target = new Vector2(player.position.x, player.position.y);
+
+        carnbeloved.GetComponent<carnHealth>(); // carn's object + script
     }
 
     // Update is called once per frame
@@ -39,6 +44,8 @@ public class monletBehavior : MonoBehaviour
 
         }
     }
+
+
     void DestroyProjectile(){
         Destroy(gameObject); // self distruct ... :)
     }

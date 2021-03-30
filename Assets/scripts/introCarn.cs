@@ -18,6 +18,20 @@ public class introCarn : MonoBehaviour
     public Image rightSprite;
     public Image leftSprite;
 
+    public Image rname;
+    public Image lname;
+
+        // SPRITES
+        public Sprite ruokitag;
+        public Sprite carntag;
+        public Sprite bisctag;
+
+        public Sprite carn1;
+        public Sprite b1;
+        public Sprite b2;
+        public Sprite b3;
+        public Sprite r1;
+
     // MANAGES THE DIALOGUE VISUALS
     public float CARNTROchat; // conversation manager !!!
 
@@ -41,6 +55,9 @@ public class introCarn : MonoBehaviour
 
         rightSprite.enabled = false;
         leftSprite.enabled = false;
+
+        rname.enabled = false;
+        lname.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -77,46 +94,71 @@ public class introCarn : MonoBehaviour
             carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         
             if (CARNTROchat == 0){
+                leftSprite.sprite = carn1;
+                lname.enabled = true;
+                lname.sprite = carntag;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             } else if (CARNTROchat == 1){
+                lname.enabled = false;
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rname.sprite = ruokitag;
+                rightSprite.sprite = r1;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 2){
+                rightSprite.sprite = b1;
+                rname.sprite = bisctag;
+                leftSprite.enabled = false;
+                lname.enabled = false;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 3){
+                rightSprite.sprite = b3;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 4){
+                leftSprite.enabled = true;
+                rname.enabled = false;
+                lname.enabled = true;
+                lname.sprite = carntag;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 5){
+                rname.enabled = true;
+                lname.enabled = false;
+                rightSprite.sprite = b2;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 6){
+                rightSprite.sprite = b1;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 7){
+                rightSprite.sprite = b3;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
                 }
             }  else if (CARNTROchat == 8){
+                rightSprite.enabled = false;
+                rname.enabled = false;
+                lname.enabled = true;
                 if (Input.GetKeyDown(KeyCode.K)){
                     CARNTROchat += 1;
                     currentLine++;
@@ -131,6 +173,7 @@ public class introCarn : MonoBehaviour
                     introtxtbox.enabled = false;
                     introstructions.enabled = false;
                     leftSprite.enabled = false;
+                    lname.enabled = false;
 
                     // RESET
                     currentLine = 0;

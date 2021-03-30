@@ -14,6 +14,25 @@ public class preBiscuit : MonoBehaviour
 
     public Image instructions; // the txt that shows how to progress
 
+    // SPRITES
+    public Image leftSprite; // holds the sprite !
+    public Image rightSprite;
+
+    public Image lname;
+    public Image rname;
+
+        // SPRITES  
+
+        public Sprite bisctag;
+        public Sprite carntag;
+
+        public Sprite b1;
+        public Sprite b2;
+        public Sprite b3;
+
+        public Sprite c1;
+        public Sprite c2;
+
 // MANAGES THE DIALOGUE VISUALS
     public float PREchat; // conversation manager !!!
 
@@ -33,6 +52,11 @@ public class preBiscuit : MonoBehaviour
         pretxt.enabled = false;
         pretxtbox.enabled = false;
         instructions.enabled = false;
+
+        rightSprite.enabled = false;
+        rname.enabled = false;
+        leftSprite.enabled = false;
+        lname.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -70,36 +94,56 @@ public class preBiscuit : MonoBehaviour
                 carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
                 if (PREchat == 0){
+                    rname.enabled = true;
+                    rname.sprite = bisctag;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 1){
+                    rname.enabled = false;
+                    leftSprite.enabled = true;
+                    lname.enabled = true;
+                    lname.sprite = carntag;
+                    leftSprite.sprite = c1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 2){
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 3){
+                    rname.enabled = false;
+                    lname.enabled = true;
+                    leftSprite.sprite = c1; 
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 4){
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 5){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 6){
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
@@ -110,11 +154,13 @@ public class preBiscuit : MonoBehaviour
                         currentLine += 1;
                     }
                 } else if (PREchat == 8){
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
                     }
                 } else if (PREchat == 9){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
@@ -128,6 +174,10 @@ public class preBiscuit : MonoBehaviour
                     pretxt.enabled = false;
                     pretxtbox.enabled = false;
                     instructions.enabled = false;
+                    rightSprite.enabled = false;
+                    leftSprite.enabled = false;
+                    lname.enabled = false;
+                    rname.enabled = false;
 
                     // RESET
                     PREchat = 11;
@@ -138,6 +188,10 @@ public class preBiscuit : MonoBehaviour
                     carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.None;
                     carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezeRotation;
                 } else if (PREchat == 11){
+                    rname.enabled = true;
+                    rname.sprite = bisctag;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         PREchat += 1;
                         currentLine += 1;
@@ -151,7 +205,11 @@ public class preBiscuit : MonoBehaviour
                     pretxt.enabled = false;
                     pretxtbox.enabled = false;
                     instructions.enabled = false;
-
+                    rightSprite.enabled = false;
+                    leftSprite.enabled = false;
+                    lname.enabled = false;
+                    rname.enabled = false;
+                    
                     // RESET
                     PREchat = 11;
                     currentLine = 10;

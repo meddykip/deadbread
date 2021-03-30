@@ -150,6 +150,8 @@ MonoBehaviour:
   full: {fileID: 21300000, guid: 77b4f8c10278e4041a29b983404297c8, type: 3}
   half: {fileID: 21300000, guid: ec6f0d1584ed7fb4291713ff4ad2b552, type: 3}
   currentHealth: 0
+  myrend: {fileID: 8340721421144662957}
+  dmg: {r: 0.9450981, g: 0.3254902, b: 0.53333336, a: 1}
 --- !u!1 &8340721421489717359
 GameObject:
   m_ObjectHideFlags: 0

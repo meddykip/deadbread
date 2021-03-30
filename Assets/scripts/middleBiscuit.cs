@@ -12,9 +12,35 @@ public class middleBiscuit : MonoBehaviour
     public Image midtxtbox; // the txtbox
     public Text midtxt; // the txt IN the txtbox
 
-    public Text midqs; // biscuit's questions!
+    public Image midqs; // biscuit's questions!
 
     public Image instructions; // the txt that shows how to progress
+
+    // SPRITES
+    public Image leftSprite; // holds the sprite !
+    public Image rightSprite;
+    public Image showcase;
+
+    public Image lname;
+    public Image rname;
+
+        // SPRITES  
+        public Sprite qs;
+        public Sprite bbuff;
+
+        public Sprite ruokitag;
+        public Sprite carntag;
+        public Sprite bisctag;
+
+        public Sprite b1;
+        public Sprite b2;
+        public Sprite b3;
+        public Sprite r1;
+        public Sprite r2;
+        public Sprite r3;
+        public Sprite r4;
+        public Sprite c1;
+        public Sprite c2;
 
 // MANAGES THE DIALOGUE VISUALS
     public float MIDBISCchat; // conversation manager !!!
@@ -39,6 +65,10 @@ public class middleBiscuit : MonoBehaviour
         instructions.enabled = false;
         midqs.enabled = false;
 
+        rightSprite.enabled = false;
+        rname.enabled = false;
+        leftSprite.enabled = false;
+        lname.enabled = false;
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
         carnbeloved.GetComponent<playerBehavior>(); // carn's object + script
@@ -125,11 +155,15 @@ public class middleBiscuit : MonoBehaviour
                 } else if (MIDBISCchat == 9){  // CONVERSATION HUB
                     Debug.Log("BISCUIT Q + A");
                     midqs.enabled = true;
+                    midqs.sprite = qs;
                     instructions.enabled = false;
-                    if (Input.GetKeyDown(KeyCode.Y)){ // imy2
-                        MIDBISCchat += 1;
-                        currentLine++;
-                    } else if (Input.GetKeyDown(KeyCode.U)){ // about you
+                    leftSprite.enabled = false;
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rname.sprite = bisctag;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b3;
+                    if (Input.GetKeyDown(KeyCode.U)){ // about you
                         MIDBISCchat = 13;
                         currentLine = 13;
                     } else if (Input.GetKeyDown(KeyCode.I)){ // parents
@@ -143,7 +177,7 @@ public class middleBiscuit : MonoBehaviour
                         currentLine = 50;
                     }
                 } else if (MIDBISCchat == 10){ // Y CHOICE PT.1 : i miss you too
-                midqs.enabled = false;
+                //.enabled = false;
                 instructions.enabled = true;
                 Debug.Log("i miss you too..!!");
                     if (Input.GetKeyDown(KeyCode.K)){
@@ -161,13 +195,15 @@ public class middleBiscuit : MonoBehaviour
                         currentLine = 9;
                     }
                 } else if (MIDBISCchat == 13){ //U CHOICE PT.1
-                midqs.enabled = false;
-                instructions.enabled = true;
+                    rightSprite.sprite = b1;
+                    midqs.enabled = false;
+                    instructions.enabled = true;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 14){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
@@ -178,21 +214,30 @@ public class middleBiscuit : MonoBehaviour
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 16){
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 17){
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 18){
+                    rightSprite.sprite = r1;
+                    rname.sprite = ruokitag;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 19){
+                    rname.enabled = false;
+                    lname.enabled = true;
+                    lname.sprite = carntag;
+                    leftSprite.enabled = true;
+                    leftSprite.sprite = c2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat = 9;
                         currentLine = 9;
@@ -200,76 +245,103 @@ public class middleBiscuit : MonoBehaviour
                 } else if (MIDBISCchat == 20){ // I CHOICE PT. 1
                     midqs.enabled = false;
                     instructions.enabled = true;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 21){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 22){
+                    rightSprite.sprite = r3;
+                    rname.sprite = ruokitag;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 23){
+                    rname.sprite = bisctag;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 24){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 25){
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 26){
+                    rightSprite.sprite = r2;
+                    rname.sprite = ruokitag;
+
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 } else if (MIDBISCchat == 27){
+                    rname.sprite = bisctag;
+                    rightSprite.sprite = b2;
+
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 28){
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 29){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 30){
+                    
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 31){
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 32){
+                    rname.enabled = false;
+                    lname.enabled = true;
+                    lname.sprite =  carntag;
+                    leftSprite.enabled = true;
+                    leftSprite.sprite = c2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 33){
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 34){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
@@ -280,6 +352,7 @@ public class middleBiscuit : MonoBehaviour
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 36){
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
@@ -290,6 +363,7 @@ public class middleBiscuit : MonoBehaviour
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 38){
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat = 9;
                         currentLine = 9;
@@ -297,61 +371,99 @@ public class middleBiscuit : MonoBehaviour
                 }  else if (MIDBISCchat == 39){ // O: HP
                     midqs.enabled = false;
                     instructions.enabled = true;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 40){
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 41){
+                    showcase.enabled = true;
+                    showcase.sprite = bbuff;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 42){
+                    
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 43){
+                    rname.enabled = false;
+                    leftSprite.enabled = true;
+                    lname.enabled = true;
+                    lname.sprite = carntag;
+                    leftSprite.sprite = c1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 44){
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 45){
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 46){
+                    showcase.enabled = false;
+                    rname.enabled = false;
+                    leftSprite.enabled = true;
+                    lname.enabled = true;
+                    leftSprite.sprite = c2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 47){
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b2;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 48){
+                    rname.enabled = false;
+                    leftSprite.enabled = true;
+                    lname.enabled = true;
+                    leftSprite.sprite = c1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat += 1;
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 49){
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b1;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat = 9;
                         currentLine = 9;
                     }
                 }  else if (MIDBISCchat == 50){ // END CONVO PT.1 : "i'll continue finding those keys..!"
+                    rname.enabled = false;
+                    leftSprite.enabled = true;
+                    lname.enabled = true;
+                    lname.sprite = carntag;
+                    leftSprite.sprite = c2;
                     midqs.enabled = false;
                     instructions.enabled = true;
                     Debug.Log("leaving now!!");
@@ -360,6 +472,10 @@ public class middleBiscuit : MonoBehaviour
                         currentLine++;
                     }
                 }  else if (MIDBISCchat == 51){ // END CONVO PT.2 : "we'll see you later!"
+                    lname.enabled = false;
+                    rname.enabled = true;
+                    rightSprite.enabled = true;
+                    rightSprite.sprite = b3;
                     if (Input.GetKeyDown(KeyCode.K)){
                         MIDBISCchat = 52;
                         currentLine++;
@@ -373,6 +489,10 @@ public class middleBiscuit : MonoBehaviour
                     midtxt.enabled = false;
                     midtxtbox.enabled = false;
                     instructions.enabled = false;
+                    rightSprite.enabled = false;
+                    leftSprite.enabled = false;
+                    lname.enabled = false;
+                    rname.enabled = false;
 
                     // RESET
                     MIDBISCchat = 9;

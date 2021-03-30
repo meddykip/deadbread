@@ -17,6 +17,22 @@ public class kyBehavior : MonoBehaviour
     public Image rightSprite;
     public Image leftSprite;
 
+    public Image rname;
+    public Image lname;
+    
+        // SPRITES
+
+        public Sprite kytag;
+        public Sprite carntag;
+
+        public Sprite k1;
+        public Sprite k2;
+        public Sprite k3;
+        public Sprite k4;
+
+        public Sprite c1;
+        public Sprite c2;
+
 // MANAGES THE DIALOGUE VISUALS
     public float KYchat; // conversation manager !!!
 
@@ -36,6 +52,11 @@ public class kyBehavior : MonoBehaviour
         kytxt.enabled = false;
         kytxtbox.enabled = false;
         instructions.enabled = false;
+
+        rightSprite.enabled = false;
+        rname.enabled = false;
+        leftSprite.enabled = false;
+        lname.enabled = false;
 
     // MOVEMENT RELATED
         // assigns necessary tingz to control the movement
@@ -73,16 +94,26 @@ public class kyBehavior : MonoBehaviour
             carnbeloved.GetComponent<playerBehavior>().myBody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
         
             if (KYchat == 0){
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rname.sprite = kytag;
+                rightSprite.sprite = k1;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 1){
+                rightSprite.sprite = k2;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 2){
+                rname.enabled = false;
+                leftSprite.enabled = true;
+                lname.enabled = true;
+                lname.sprite = kytag;
+                leftSprite.sprite = c1;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
@@ -93,36 +124,53 @@ public class kyBehavior : MonoBehaviour
                     currentLine++;
                 }
             } else if (KYchat == 4){
+                lname.enabled = false;
+                rname.enabled =  true;
+                rightSprite.sprite = k2;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 5){
+                
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 6){
+                lname.enabled = true;
+                rname.enabled =  false;
+                
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 7){
+                lname.enabled = false;
+                rname.enabled =  true;
+                rightSprite.sprite = k3;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 8){
+                rightSprite.sprite = k1;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 9){
+                lname.enabled = true;
+                rname.enabled =  false;
+                leftSprite.sprite = c2;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
                 }
             } else if (KYchat == 10){
+                lname.enabled = false;
+                rname.enabled =  true;
+                rightSprite.sprite = k1;
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
                     currentLine++;
@@ -134,6 +182,7 @@ public class kyBehavior : MonoBehaviour
                     currentLine++;
                 }
             } else if (KYchat == 12){
+                rightSprite.sprite = k3;
                 Debug.Log("12");
                 if(Input.GetKeyDown(KeyCode.K)){
                     Debug.Log("xiao");
@@ -141,6 +190,10 @@ public class kyBehavior : MonoBehaviour
                     currentLine++;
                 }
             } else if (KYchat == 13){
+                rightSprite.enabled = true;
+                rname.enabled = true;
+                rname.sprite = kytag;
+                rightSprite.sprite = k4;
                 Debug.Log("13");
                 if(Input.GetKeyDown(KeyCode.K)){
                     KYchat += 1;
@@ -156,6 +209,9 @@ public class kyBehavior : MonoBehaviour
                 kytxtbox.enabled = false;
                 instructions.enabled = false;
                 rightSprite.enabled = false;
+                leftSprite.enabled = false;
+                lname.enabled = false;
+                rname.enabled = false;
 
                 // RESET
                 KYchat = 13;

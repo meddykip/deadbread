@@ -113,3 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  carnbeloved: {fileID: 428581630329859544, guid: af85a48dd56bdf84789156f08f4300a6,
+    type: 3}
+  damage: 2
+  hitCarn: 0
